@@ -26,11 +26,13 @@ int main ()
 
 	cout << "Before sorting: ";
 	PrintVector(vecIn);
-
-	sort(vecIn.begin(),vecIn.end());
 	
+	sort( vecIn.begin(), vecIn.end() );
 	cout << "After sorting: ";
 	PrintVector(vecIn);
+
+	reverse ( vecIn.begin(), vecIn.end() );
+	PrintVector( vecIn );
 
 	EndOfExecPause();
 
