@@ -43,9 +43,11 @@ int main ()
 	if ( myIter != vecIn.end() )
 		swap( *myIter, *vecIn.begin() );
 
+	PrintVector(vecIn);
 
 	// Inserimento
 
+	int temp;
 	cin >> temp;
 	
 	for( myIter=vecIn.begin() ; myIter < vecIn.end() ; ++ myIter)
