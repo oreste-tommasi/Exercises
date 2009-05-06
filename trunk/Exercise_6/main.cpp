@@ -23,7 +23,7 @@ int main ()
 	{
 		vecIn.push_back( userIn );
 	}
-
+	
 	PrintVector( vecIn );
 
 	vector< int >::iterator myIter;
@@ -35,19 +35,14 @@ int main ()
 	string a;
 	cin >> a;
 	
-	// Ricerca e swap (RIVEDERE LO SWAP e controllo sul find!!!!!!)
+	// Ricerca e swap
 
 	cin >> valueFind;
 
-	myIter=find(vecIn.begin(),vecIn.end(),valueFind); 
-	//if myIter != vecIn.end()
-	//	swap( vecIn[0] , *myIter ) ???
+	myIter=find( vecIn.begin(), vecIn.end(), valueFind ); 
+	if ( myIter != vecIn.end() )
+		swap( *myIter, *vecIn.begin() );
 
-	int temp; 
-	temp = *myIter;
-	*myIter=vecIn[0];
-	vecIn[0]=temp;
-	PrintVector(vecIn);
 
 	// Inserimento
 
@@ -80,40 +75,7 @@ int main ()
 			
 	}
 
-	PrintVector(vecIn);
-	//cout << myIter;
-
-
-
-	//cout << "\n\nBefore resize:\n\n";
-	//
-	//cout << "Size:\t" << vecIn.size() << "\n"
-	//	 << "Capacity:\t" << vecIn.capacity() << "\n"; 
-
-	//vecIn.resize(0);
-
- //   
-
-	//cout << "\n\nAfter resize:\n\n";
-	//PrintVector(vecIn);
-	//cout << "Size:\t" << vecIn.size() << "\n"
-	//	 << "Capacity:\t" << vecIn.capacity() << "\n"; 
-
-	//sort(vecIn.begin(),vecIn.end());
-	//
-	//cout << "After sorting: ";
-	//PrintVector(vecIn);
-
-	//cout << "dimensione: " << vecIn.size()
-	//	  << "\n";
-	
-	////PrintVector( vecIn );
-	//
-	//for( myIter=vecIn.begin() ; myIter < (vecIn.end() - 1) ; ++ myIter)
-	//{
-	//	if ( *myIter > *(myIter + 1))
-	//		cout << *myIter;
-	//}
+	PrintVector( vecIn );
 
 	EndOfExecPause();
 
