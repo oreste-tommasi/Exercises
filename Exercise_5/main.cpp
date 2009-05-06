@@ -10,6 +10,7 @@ using namespace std;
 // forward declaration 
 
 void			PrintVector(const vector< int >& inVec);
+void			ReadVector(vector< int >& inVec, bool inEmpty = true );
 void			EndOfExecPause();
 
 // --------------------------------------------------------------------------
@@ -17,14 +18,11 @@ void			EndOfExecPause();
 // --------------------------------------------------------------------------
 int main ()
 {
-	int userIn;
 	vector< int > vecIn;
 
-	while ( cin >> userIn )
-	{
-		vecIn.push_back(userIn);
-	}
-	
+	ReadVector( vecIn );
+	PrintVector( vecIn );
+		
 	cout << "size: " << vecIn.size()
 		<< "\n capacity: " << vecIn.capacity() << "\n";
 
@@ -42,6 +40,22 @@ int main ()
 
 	return 0;
 }
+
+// --------------------------------------------------------------------------
+//		PrintVector
+// --------------------------------------------------------------------------
+void
+ReadVector( vector< int >& inVec, bool inEmpty)
+{
+	int userIn;
+
+	if ( inEmpty )
+		inVec.resize(0);
+	
+	while ( cin >> userIn )
+		inVec.push_back(userIn);
+}
+
 
 // --------------------------------------------------------------------------
 //		PrintVector
