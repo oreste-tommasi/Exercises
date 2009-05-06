@@ -34,6 +34,7 @@ int main ()
 
 	cout << "\n\n";
 
+	//vecIn.resize( myIter - vecIn.begin() );
 	vecIn.erase( myIter, vecIn.end());
 
 	PrintVector( vecIn );
@@ -75,7 +76,7 @@ EndOfExecPause()
 bool
 IsOdd (int i) 
 { 
-	return ((i%2)==1); 
+	return i & 0x01; // ((i%2)==1); 
 }
 
 
