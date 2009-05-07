@@ -1,3 +1,5 @@
+#ifndef CPOINT_H
+#define CPOINT_H
 
 
 class CPoint 
@@ -10,8 +12,13 @@ public:
 	void		GetCoord( double& outX, double& outY );
 	//void		GetCoord2( double outX, double outY ); // errata
 
+	void		Draw();
+
 private: 
 	double	mX;
 	double	mY;
 };
+
+
+#endif // CPOINT_H
 

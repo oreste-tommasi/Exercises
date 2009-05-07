@@ -2,15 +2,13 @@
 #include <iostream>
 
 // project includes
-#include "CPoint.h"
+#include "CPolyLine.h"
 
 
 // --------------------------------------------------------------------------
 //	 CPoint
 // --------------------------------------------------------------------------
-CPoint::CPoint( double inX, double inY )
-: mX(inX)
-, mY(inY)
+CPolyLine::CPolyLine()
 {
 
 }
@@ -18,37 +16,41 @@ CPoint::CPoint( double inX, double inY )
 // --------------------------------------------------------------------------
 //	 ~CPoint
 // --------------------------------------------------------------------------
-CPoint::~CPoint()
+CPolyLine::~CPolyLine()
 {}
 
 
 // --------------------------------------------------------------------------
-//	 SetCoord
+//	 AddPoint
 // --------------------------------------------------------------------------
 void
-CPoint::SetCoord( double inX, double inY )
+CPolyLine::AddPoint( const CPoint& inP )
 {
-	mX = inX;
-	mY = inY;
+	mVertices.push_back( inP );
 }
 
-// --------------------------------------------------------------------------
-//	 GetCoord
-// --------------------------------------------------------------------------
-void
-CPoint::GetCoord( double& outX, double& outY )
-{
-	outX = mX;
-	outY = mY;
-}
 
 // --------------------------------------------------------------------------
 //	 Draw
 // --------------------------------------------------------------------------
 void
-CPoint::Draw()
+CPolyLine::Draw()
 {
-	std::cout << "(" << mX << "," << mY << ")";
+	vector< CPoint >::iterator  myIter;
+	double x, y;
+
+	for ( myIter=mVertices.begin(); myIter<(mVertices.end()-1); ++myIter)
+	{
+		myIter->Draw();
+		cout << "-";
+	}
+
+	myIter->Draw();
+	cout << "\n";
 }
+
+
+
+
 
 
