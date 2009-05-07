@@ -4,7 +4,9 @@
 // global namespace declaration
 using namespace std;
 
+
 #include "CPoint.h"
+#include "CPolyLine.h"
 #include "CShape.h"
 
 
@@ -15,9 +17,18 @@ int main ()
 
 	p.SetCoord( 10, 20);
 	p.GetCoord( x, y);
-	cout << x << y << "\n";
 
-	CShape	pp;
+	CPolyLine polyLine;
+	polyLine.AddPoint( p );
+
+	p.SetCoord( 20, 40 );
+	polyLine.AddPoint( p );
+
+	polyLine.Draw();
+
+	system("pause");
 
 	return 0;
+
+
 }

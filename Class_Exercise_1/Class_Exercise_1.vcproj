@@ -119,6 +119,12 @@
 				RelativePath=".\CPoint.h">
 			</File>
 			<File
+				RelativePath=".\CPolyLine.cpp">
+			</File>
+			<File
+				RelativePath=".\CPolyLine.h">
+			</File>
+			<File
 				RelativePath=".\CShape.h">
 			</File>
 			<File
