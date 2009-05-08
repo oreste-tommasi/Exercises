@@ -36,7 +36,7 @@ CPoint::SetCoord( double inX, double inY )
 //	 GetCoord
 // --------------------------------------------------------------------------
 void
-CPoint::GetCoord( double& outX, double& outY )
+CPoint::GetCoord( double& outX, double& outY ) const
 {
 	outX = mX;
 	outY = mY;
