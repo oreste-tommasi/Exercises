@@ -18,6 +18,7 @@ public:
 	bool 	Inside( const CPoint& inP );
 	CPoint	GetLT() const { return mLT; };
 	CPoint	GetRB() const { return mRB; };
+	void	Draw();
 
 private: 
 	CPoint mLT;
