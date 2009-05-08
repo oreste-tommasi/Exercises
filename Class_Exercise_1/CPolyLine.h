@@ -6,7 +6,7 @@
 #include <vector>
 
 // project include
-#include "CPoint.h"
+#include "CRect.h"
 
 // forward declarations
 using namespace std;
@@ -25,9 +25,14 @@ public:
 	size_t		GetVertexCount() const
 				{ return mVertices.size(); }
 
+	CRect		GetBoundingBox() const
+				{ return mBoundRect; }
+
 private: 
 	// implementation 
 	vector< CPoint >	mVertices;
+	CRect				mBoundRect;
+
 	
 
 };

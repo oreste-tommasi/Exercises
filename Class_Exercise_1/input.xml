@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Geometries>
+	<Point x=3 y=10 />
+	
+	<PolyLine>
+		<Point x=1 y=2 />
+		<Point x=5 y=3 />
+		<Point x=56 y=20 />
+	</PolyLine>
+	
+</Geometries>
