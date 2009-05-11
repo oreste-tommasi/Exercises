@@ -16,6 +16,68 @@ using namespace std;
 
 
 // --------------------------------------------------------------------------
+//	 ReadXml2
+// --------------------------------------------------------------------------
+bool
+ReadXml2(	vector< CPoint* >& outPoints, 
+			vector< CPolyLine* >& outPolyLines, 
+			vector< CRect* >& outRects )
+{
+	bool					success = false;
+	XMLNode					xMainNode = XMLNode::openFileHelper( "input.xml" ); 
+	XMLNode					xNode = xMainNode.getChildNode();
+	string					theName = xNode.getName();
+	
+
+	if ( theName != "Geometries" )
+		cout << "Unknown format" << endl;
+	else
+	{	
+		int			count = xNode.nChildNode();
+		XMLNode		currNode;
+
+		for ( int i=0; i<count; ++i)
+		{
+			currNode = xNode.getChildNode(i);
+			theName = currNode.getName();
+
+			if ( theName == "Point"  )
+			{
+				CPoint* p= CPoint::CreateFromXml( currNode );
+				outPoints.push_back( p );
+				
+			}
+			else if ( theName ==  "PolyLine" )
+			{
+				CPolyLine* myPL = CPolyLine::CreateFromXml( currNode );
+				outPolyLines.push_back( myPL );
+			
+			}
+			else if ( theName == "Rect"  )
+			{
+				CRect* myRect = CRect::CreateFromXml( currNode );
+				outRects.push_back( myRect );
+
+			}
+			
+			else
+			{
+				cout<< theName << ": unknow geometry type" << endl;
+			}
+
+		}
+		
+		success = true;
+	}	
+
+	
+	return success;
+}
+
+
+
+
+// --------------------------------------------------------------------------
 //	 ReadXml
 // --------------------------------------------------------------------------
 bool 
@@ -75,7 +137,22 @@ ReadXml()
 				polyLine.Draw();
 				cout << endl;
 			}
-			// aggiungi qui altre geometrie e poi rimuovi questo commento
+			else if ( theName == "Rect"  )
+			{
+				
+				cout << "Parsing a <Rect>" << endl;
+				double ltX = atof ( currNode.getAttribute( "ltx" ) );
+				double ltY = atof ( currNode.getAttribute( "lty" ) );
+				double rbX = atof ( currNode.getAttribute( "rbx" ) );
+				double rbY = atof ( currNode.getAttribute( "rby" ) );
+
+				CRect myRect( CPoint( ltX, ltY), CPoint( rbX, rbY ) );
+				cout << "Drawing <Rect>" << endl;
+				myRect.Draw();
+				cout << endl;
+
+			}
+			
 			else
 			{
 				cout<< theName << ": unknow geometry type" << endl;
@@ -92,9 +169,9 @@ ReadXml()
 
 
 // --------------------------------------------------------------------------
-//	 f_es2
+//	 FunctExer2
 // --------------------------------------------------------------------------
-bool f_es2 ()
+bool FunctExer2 ()
 {
 	CPoint p(3,4);
 	CPoint q(10, 1);
@@ -157,10 +234,10 @@ bool f_es2 ()
 }
 
 // --------------------------------------------------------------------------
-//	 f_es3
+//	 FunctExer3
 // --------------------------------------------------------------------------
 bool 
-f_es3()
+FunctExer3()
 {
 	CPolyLine mPol;
 	int myCount, inSize;

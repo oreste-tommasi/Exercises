@@ -2,13 +2,17 @@
 
 <Geometries>
 	<Point x=3 y=10 />
+	<Point x=1 y=4 />
+	<Point x=-3 y=40 />
 	
 	<PolyLine>
 		1 2 5 3 56 20
 	</PolyLine>
+	<PolyLine>
+		-2 0 -4 2 15 0132 5 0 
+	</PolyLine>
 	
-	<Rect>
-	
-	</Rect>
-	
+	<Rect ltx=3 lty=5 rbx=20 rby=30 />
+	<Rect ltx=0 lty=0 rbx=1 rby=3 />
+		
 </Geometries>
