@@ -28,6 +28,8 @@ public:
 	CRect		GetBoundingBox() const
 				{ return mBoundRect; }
 
+	//static CPolyLine* CreateFromXml(XMLNode inNode); 
+
 private: 
 	// implementation 
 	vector< CPoint >	mVertices;

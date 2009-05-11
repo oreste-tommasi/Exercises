@@ -16,6 +16,8 @@ public:
 
 	void			Draw();
 
+	//static CPoint* CreateFromXml(XMLNode inNode); 
+
 private: 
 	double	mX;
 	double	mY;

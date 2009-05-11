@@ -14,7 +14,9 @@ int main ()
 
 	//f_es3();
 	
-	FunctExerciseX();
+	//FunctExerciseX();
+
+	ReadXml();
 
 	cout << endl << endl;
 	system("pause");

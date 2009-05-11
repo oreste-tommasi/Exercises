@@ -1,7 +1,9 @@
 // system includes
 #include <iostream>
 #include <fstream>
+#include <string>
 
+#include <sstream>
 
 // project includes
 //#include "CRect.h"
@@ -11,6 +13,83 @@
 
 // global namespace declaration
 using namespace std;
+
+
+// --------------------------------------------------------------------------
+//	 ReadXml
+// --------------------------------------------------------------------------
+bool 
+ReadXml()
+{
+	bool		success = false;
+	XMLNode		xMainNode = XMLNode::openFileHelper( "input.xml" ); 
+	XMLNode		xNode = xMainNode.getChildNode();
+	string		theName = xNode.getName();
+
+	if ( theName != "Geometries" )
+		cout << "Unknown format" << endl;
+	else
+	{	
+		int			count = xNode.nChildNode();
+		XMLNode		currNode;
+
+		for ( int i=0; i<count; ++i)
+		{
+			currNode = xNode.getChildNode(i);
+			theName = currNode.getName();
+
+			if ( theName == "Point"  )
+			{
+				// CPoint* ptr = CPoint::CreateFromXml(currNode);
+				cout << "Parsing a <Point>" << endl;
+				double x = atof ( currNode.getAttribute( "x" ) );
+				double y = atof ( currNode.getAttribute( "y" ) );
+				
+				CPoint p(x,y);
+				cout << "Drawing <Point>" << endl;
+				p.Draw();
+				cout << endl;
+
+			}
+			else if ( theName ==  "PolyLine" )
+			{
+				cout << "Parsing a <PolyLine>" << endl;
+
+				string			str = currNode.getText();
+				double			posX, posY;
+				istringstream	strStream;
+				CPolyLine		polyLine;
+
+			    strStream.str(str);
+				
+				while( strStream >> posX )
+				{
+					if ( strStream >> posY )
+					{
+						CPoint p(posX, posY);
+						polyLine.AddPoint( p );
+					}
+				}
+
+				cout << "Drawing <PolyLine>" << endl;
+				polyLine.Draw();
+				cout << endl;
+			}
+			// aggiungi qui altre geometrie e poi rimuovi questo commento
+			else
+			{
+				cout<< theName << ": unknow geometry type" << endl;
+			}
+
+		}
+		
+		success = true;
+	}	
+
+
+	return success;
+}
+
 
 // --------------------------------------------------------------------------
 //	 f_es2
@@ -141,7 +220,4 @@ FunctExerciseX()
 
 	return true;
 }
-
-
-
 
