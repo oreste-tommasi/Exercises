@@ -11,14 +11,15 @@ public:
 	CRect( const CPoint& inP1, const CPoint& inP2 );
 	~CRect();
 
-	void	SetExtremes( const CPoint& inP1, const CPoint& inP2 );
-	void	GetExtremes( CPoint& outLT, CPoint& outRB );
-	void	Shift( const CPoint& inPShift );
-	bool 	Intersect( const CRect& inRect );
-	bool 	Inside( const CPoint& inP );
-	CPoint	GetLT() const { return mLT; };
-	CPoint	GetRB() const { return mRB; };
-	void	Draw();
+	void			SetExtremes( const CPoint& inP1, const CPoint& inP2 );
+	void			GetExtremes( CPoint& outLT, CPoint& outRB );
+	void			Shift( const CPoint& inPShift );
+	bool 			Intersect( const CRect& inRect );
+	bool 			Inside( const CPoint& inP );
+	CPoint			GetLT() const { return mLT; };
+	CPoint			GetRB() const { return mRB; };
+	void			Draw();
+	static CRect*	CreateFromXml(XMLNode& inNode); 
 
 private: 
 	CPoint mLT;

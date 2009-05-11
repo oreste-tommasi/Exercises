@@ -3,7 +3,7 @@
 
 // project includes
 #include "CPoint.h"
-
+#include "xmlParser.h"
 
 // --------------------------------------------------------------------------
 //	 CPoint
@@ -52,3 +52,15 @@ CPoint::Draw()
 }
 
 
+// --------------------------------------------------------------------------
+//	 CreateFromXml
+// --------------------------------------------------------------------------
+CPoint* 
+CPoint::CreateFromXml( XMLNode& currNode )
+{
+	double x = atof ( currNode.getAttribute( "x" ) );
+	double y = atof ( currNode.getAttribute( "y" ) );
+	CPoint* p = new CPoint(x,y);
+	return p;
+	//se faccio la delete mi perdo l'indirizzo!
+}

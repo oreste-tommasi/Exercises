@@ -102,3 +102,17 @@ CRect::Draw()
 	cout << "\n";
 }
 
+// --------------------------------------------------------------------------
+//	 CreateFromXml
+// --------------------------------------------------------------------------
+CRect* 
+CRect::CreateFromXml( XMLNode& currNode )
+{
+	double ltX = atof ( currNode.getAttribute( "ltx" ) );
+	double ltY = atof ( currNode.getAttribute( "lty" ) );
+	double rbX = atof ( currNode.getAttribute( "rbx" ) );
+	double rbY = atof ( currNode.getAttribute( "rby" ) );
+
+	CRect* myRect = new CRect( CPoint( ltX, ltY), CPoint( rbX, rbY ) );
+	return myRect;
+}

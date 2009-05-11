@@ -1,5 +1,6 @@
 // system includes
 #include <iostream>
+#include <sstream>
 
 // project includes
 #include "CPolyLine.h"
@@ -69,6 +70,27 @@ CPolyLine::Draw()
 
 
 
+// --------------------------------------------------------------------------
+//	 CreateFromXml
+// --------------------------------------------------------------------------
+CPolyLine* 
+CPolyLine::CreateFromXml( XMLNode& currNode )
+{
+	string			str = currNode.getText();
+	double			posX, posY;
+	istringstream	strStream;
+	
+	strStream.str(str);
 
-
-
+	CPolyLine* myPL = new CPolyLine();
+				
+	while( strStream >> posX )
+	{
+		if ( strStream >> posY )
+		{
+			CPoint p(posX, posY);
+			myPL->AddPoint( p );
+		}
+	}
+	return myPL;
+}

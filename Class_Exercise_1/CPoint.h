@@ -1,6 +1,6 @@
 #ifndef CPOINT_H
 #define CPOINT_H
-
+#include "xmlParser.h"
 
 class CPoint 
 {
@@ -13,7 +13,7 @@ public:
 	//void			GetCoord2( double outX, double outY ); // errata
 	double			GetX() const { return mX; } 
 	double			GetY() const { return mY; }
-
+	static CPoint*	CreateFromXml( XMLNode& currNode );//aggiunto
 	void			Draw();
 
 	//static CPoint* CreateFromXml(XMLNode inNode); 

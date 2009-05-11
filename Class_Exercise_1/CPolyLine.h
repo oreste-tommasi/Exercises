@@ -19,16 +19,16 @@ public:
 	CPolyLine();
 	~CPolyLine();
 
-	void		Draw();
+	void				Draw();
 
-	void		AddPoint( const CPoint& inP );
-	size_t		GetVertexCount() const
-				{ return mVertices.size(); }
+	void				AddPoint( const CPoint& inP );
+	size_t				GetVertexCount() const
+						{ return mVertices.size(); }
 
-	CRect		GetBoundingBox() const
-				{ return mBoundRect; }
+	CRect				GetBoundingBox() const
+						{ return mBoundRect; }
 
-	//static CPolyLine* CreateFromXml(XMLNode inNode); 
+	static CPolyLine*	CreateFromXml(XMLNode& inNode); 
 
 private: 
 	// implementation 

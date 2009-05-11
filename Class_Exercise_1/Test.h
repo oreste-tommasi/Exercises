@@ -1,11 +1,19 @@
-bool f_es2 ();
+// system includes
+#include< vector >
 
-bool f_es3 ();
+// project includes
+#include "CRect.h"
+#include "CPolyLine.h"
+
+bool FunctExer2 ();
+
+bool FunctExer3 ();
 
 bool FunctExerciseX();
 
 bool ReadXml();
 
-bool ReadXml2(	vector< CPoint* > outPoints, 
-				vector< CPolyLine* > outPolyLines, 
-				vector< CRect* > outRects );
+bool ReadXml2(	vector< CPoint* >& outPoints, 
+				vector< CPolyLine* >& outPolyLines, 
+				vector< CRect* >& outRects );
+// Perché un bool???
