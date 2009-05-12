@@ -8,11 +8,15 @@
 // project include
 #include "CRect.h"
 
+// external include
+#include "xmlParser.h"
+
+
 // forward declarations
 using namespace std;
 
 
-class CPolyLine 
+class CPolyLine : public CShape
 {
 public:
 	// interface
@@ -28,7 +32,10 @@ public:
 	CRect				GetBoundingBox() const
 						{ return mBoundRect; }
 
-	static CPolyLine*	CreateFromXml(XMLNode& inNode); 
+	static CShape*		CreateFromXml(XMLNode& inNode); 
+
+	virtual void		SaveXml ( XMLNode& inNode );
+
 
 private: 
 	// implementation 
@@ -38,5 +45,6 @@ private:
 	
 
 };
+
 
 #endif // CPOLYLINE_H

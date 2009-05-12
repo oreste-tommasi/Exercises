@@ -5,7 +5,10 @@
 // project includes
 #include "CPoint.h"
 
-class CRect
+// external include
+#include "xmlParser.h"
+
+class CRect : public CShape
 {
 public:
 	CRect( const CPoint& inP1, const CPoint& inP2 );
@@ -19,7 +22,10 @@ public:
 	CPoint			GetLT() const { return mLT; };
 	CPoint			GetRB() const { return mRB; };
 	void			Draw();
-	static CRect*	CreateFromXml(XMLNode& inNode); 
+	static CShape*	CreateFromXml( XMLNode& inNode ); 
+
+	virtual void	SaveXml ( XMLNode& inNode );
+
 
 private: 
 	CPoint mLT;
