@@ -1,5 +1,7 @@
 // system includes
 #include <iostream>
+#include <string>
+#include <sstream>
 
 // project includes
 #include "CRect.h"
@@ -105,7 +107,7 @@ CRect::Draw()
 // --------------------------------------------------------------------------
 //	 CreateFromXml
 // --------------------------------------------------------------------------
-CRect* 
+CShape* 
 CRect::CreateFromXml( XMLNode& currNode )
 {
 	double ltX = atof ( currNode.getAttribute( "ltx" ) );
@@ -115,4 +117,29 @@ CRect::CreateFromXml( XMLNode& currNode )
 
 	CRect* myRect = new CRect( CPoint( ltX, ltY), CPoint( rbX, rbY ) );
 	return myRect;
+}
+
+
+// --------------------------------------------------------------------------
+//	 CreateFromXml [virtual]
+// --------------------------------------------------------------------------
+void
+CRect::SaveXml ( XMLNode& inNode )
+{
+	XMLNode io = inNode.addChild( "Rect" );
+	ostringstream 	strStreamLTX, strStreamLTY, strStreamRBX, strStreamRBY;
+
+	strStreamLTX << mLT.GetX();
+	io.addAttribute( "ltx", strStreamLTX.str().c_str() );
+
+	strStreamLTY << mLT.GetY();
+	io.addAttribute( "lty", strStreamLTY.str().c_str() );
+
+	strStreamRBX << mRB.GetX();
+	io.addAttribute( "rbx", strStreamRBX.str().c_str() );
+
+	strStreamRBY << mRB.GetY();
+	io.addAttribute( "rby", strStreamRBY.str().c_str() );
+
+	return;
 }

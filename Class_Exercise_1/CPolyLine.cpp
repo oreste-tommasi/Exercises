@@ -13,14 +13,15 @@
 CPolyLine::CPolyLine()
 : mBoundRect( CPoint(0,0), CPoint(0,0) )
 {
-
 }
 
 // --------------------------------------------------------------------------
 //	 ~CPolyLine
 // --------------------------------------------------------------------------
 CPolyLine::~CPolyLine()
-{}
+{
+	;//cout << "distruttore CPolyLine" << endl;
+}
 
 
 
@@ -68,12 +69,10 @@ CPolyLine::Draw()
 	cout << "\n";
 }
 
-
-
 // --------------------------------------------------------------------------
 //	 CreateFromXml
 // --------------------------------------------------------------------------
-CPolyLine* 
+CShape* 
 CPolyLine::CreateFromXml( XMLNode& currNode )
 {
 	string			str = currNode.getText();
@@ -93,4 +92,25 @@ CPolyLine::CreateFromXml( XMLNode& currNode )
 		}
 	}
 	return myPL;
+}
+
+
+// --------------------------------------------------------------------------
+//	 CreateFromXml [virtual]
+// --------------------------------------------------------------------------
+void
+CPolyLine::SaveXml ( XMLNode& inNode )
+{
+	XMLNode io = inNode.addChild( "PolyLine" );
+	ostringstream 	strStream;
+	vector< CPoint >::iterator myIt;
+
+	for( myIt=this->mVertices.begin(); myIt != mVertices.end() ; ++ myIt )
+	{
+		strStream << myIt->GetX() << " " << myIt->GetY() << " ";
+	}
+
+	io.addText( strStream.str().c_str() );
+		
+	return;
 }

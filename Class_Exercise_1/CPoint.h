@@ -1,8 +1,13 @@
 #ifndef CPOINT_H
 #define CPOINT_H
+
+// external include
 #include "xmlParser.h"
 
-class CPoint 
+// project include
+#include "CShape.h"
+
+class CPoint : public CShape 
 {
 public:
 	CPoint( double inX, double inY );
@@ -13,9 +18,10 @@ public:
 	//void			GetCoord2( double outX, double outY ); // errata
 	double			GetX() const { return mX; } 
 	double			GetY() const { return mY; }
-	static CPoint*	CreateFromXml( XMLNode& currNode );//aggiunto
-	void			Draw();
-
+	static CShape*	CreateFromXml( XMLNode& currNode );//aggiunto
+	
+	virtual void	Draw();
+	virtual void	SaveXml ( XMLNode& inNode );
 	//static CPoint* CreateFromXml(XMLNode inNode); 
 
 private: 

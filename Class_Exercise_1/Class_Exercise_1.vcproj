@@ -143,6 +143,18 @@
 				RelativePath=".\main.cpp">
 			</File>
 			<File
+				RelativePath=".\NotPolymorphic.cpp">
+			</File>
+			<File
+				RelativePath=".\NotPolymorphic.h">
+			</File>
+			<File
+				RelativePath=".\Polymorphic.cpp">
+			</File>
+			<File
+				RelativePath=".\Polymorphic.h">
+			</File>
+			<File
 				RelativePath=".\Test.cpp">
 			</File>
 			<File
