@@ -21,18 +21,20 @@ public:
 
 	virtual ~CImage() { delete[] mPtr; } 
 
-	unsigned int	GetWidth() const { return mWidth; } 
-	unsigned int	GetHeight() const { return mHeight; }
-	string			GetOrigin() const { return mOrigin; }
-	int				GetNChannel() const { return mNChannel; } 
+	unsigned int			GetWidth() const { return mWidth; } 
+	unsigned int			GetHeight() const { return mHeight; }
+	string					GetOrigin() const { return mOrigin; }
+	int						GetNChannel() const { return mNChannel; } 
 	
-	int				GetBpp() const { return mBpp; } 
-	string			GetCModel() const { return mCModel; } 
+	int						GetBpp() const { return mBpp; } 
+	string					GetCModel() const { return mCModel; } 
 	
 
-	bool			GetPix( unsigned int inRow, unsigned int inCol, vector< unsigned char >& inVec ); 
-	bool			SetPix( unsigned int inRow, unsigned int inCol, vector< unsigned char >& inVec  );
+	bool						GetPix( unsigned int inRow, unsigned int inCol, vector< unsigned char >& inVec ); 
+	bool						SetPix( unsigned int inRow, unsigned int inCol, vector< unsigned char >& inVec  );
 
+	bool						Fill( vector< unsigned char >& inColour );
+	static CImage*			CreateFromFile( );
 
 private: 
 	unsigned int	mWidth;

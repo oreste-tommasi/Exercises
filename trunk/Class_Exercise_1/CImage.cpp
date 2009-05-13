@@ -64,3 +64,44 @@ CImage::SetPix( unsigned int inRow, unsigned int inCol, vector< unsigned char >&
 	return true;
 
 }
+
+// --------------------------------------------------------------------------
+//	 Fill
+// --------------------------------------------------------------------------
+
+bool
+CImage::Fill( vector< unsigned char >& inColour )
+{
+	if ( inColour.size()!= mNChannel )
+		return false;		
+	
+	for (int i=0; i != mWidth*mHeight; ++i )
+	{
+		for (int k=0; k != mNChannel; ++k)
+			(*(mPtr+i*mNChannel+k))=inColour[k];
+	}
+	return true;
+}
+
+// --------------------------------------------------------------------------
+//	 CreateFromFile
+// --------------------------------------------------------------------------
+
+CImage*	
+CImage::CreateFromFile( )
+{
+	ifstream	fileInput( "image.ppm" );
+	string header;
+	int theWidth, theHeight, theColour;
+	string data;
+
+	// insert controls
+
+	fileInput >> theWidth;
+	fileInput >> theHeight;
+	fileInput >> theColour;
+	fileInput >> data;
+
+	//translate data in CImage sense
+	return true;
+}
