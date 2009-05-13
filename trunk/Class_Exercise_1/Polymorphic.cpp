@@ -17,9 +17,11 @@
 // global namespace declaration
 using namespace std;
 
+CShape::CreationMapType	CShape::gCreateFromXmlMap;
+
 
 // --------------------------------------------------------------------------
-//	 Poly2
+//	 ReadXml_
 // --------------------------------------------------------------------------
 list< CShape* >	
 ReadXml_()
@@ -30,9 +32,9 @@ ReadXml_()
 	string			theName = xNode.getName();
 	list< CShape* >	outShapes;
 	
-	CShape::gCreateFromXmlMap[ "Point" ] = CPoint::CreateFromXml ;
-	CShape::gCreateFromXmlMap[ "PolyLine" ] = CPolyLine::CreateFromXml ;
-	CShape::gCreateFromXmlMap[ "Rect" ] = CRect::CreateFromXml ;
+	CShape::gCreateFromXmlMap[ "Point" ] = CPoint::CreateFromXml;
+	CShape::gCreateFromXmlMap[ "PolyLine" ] = CPolyLine::CreateFromXml;
+	CShape::gCreateFromXmlMap[ "Rect" ] = CRect::CreateFromXml;
 
 	if ( theName != "Geometries" )
 		cout << "Unknown format" << endl;
@@ -42,19 +44,24 @@ ReadXml_()
 		XMLNode					currNode;
 		CShape::CreationMapIter	myIter;
 
-		theName = currNode.getName();
-
-		myIter = CShape::gCreateFromXmlMap.find( theName.c_str() );
-
-		if ( myIter !=  CShape::gCreateFromXmlMap.end() )
+		for ( int i=0; i<count; ++i)
 		{
-			CShape* ptr = myIter->second( currNode );
-			outShapes.push_back( ptr );
+			currNode = xNode.getChildNode(i);
+			theName = currNode.getName();
+			
+			myIter = CShape::gCreateFromXmlMap.find( theName.c_str() );
+
+			if ( myIter !=  CShape::gCreateFromXmlMap.end() )
+			{
+				CreateFromXmlType currFunction = myIter->second;
+				CShape* ptr = currFunction( currNode );
+				outShapes.push_back( ptr );
+			}
+			else
+				cout << theName << ": unknow geometry type" << endl;
 		}
-		else
-			cout << theName << ": unknow geometry type" << endl;
 	}
-	
+		
 	return outShapes;
 }
 
@@ -213,4 +220,42 @@ ReadXml (	list< CShape* >& outShapes )
 
 	
 	return success;
+}
+
+
+// --------------------------------------------------------------------------
+//	 Poly3
+// --------------------------------------------------------------------------
+bool
+Poly3()
+{
+	list< CShape* >	outShapes;
+
+	outShapes = ReadXml_();
+
+	list< CShape* >::iterator	shapeIter;
+	
+	//CPoint* p = new CPoint(9,29);
+	
+	//shapeIter=outShapes.begin();
+	//if ( outShapes.size() > 1 )
+	//{
+	//	++shapeIter;
+	//	outShapes.insert( shapeIter, p );
+	//}
+	//
+	XMLNode node = XMLNode::createXMLTopNode( "Geometries" );
+	
+	cout << "Drawing <Shapes>" << endl << endl;
+	for( shapeIter=outShapes.begin() ; shapeIter != outShapes.end() ; ++ shapeIter)
+	{
+		(*(shapeIter))->Draw();
+		(*(shapeIter))->SaveXml( node );
+		cout << "\n";
+
+		delete(*(shapeIter));
+	}
+	node.writeToFile( "pluto.xml" );
+
+	return true;
 }
