@@ -30,23 +30,23 @@ int main ()
 
 	//FunctionNoPolymorphic();
 
-	//Poly2();
+	Poly3();
 
 
 
-	typedef	 void(*MyFunType)(int) ;	
+	//typedef	 void(*MyFunType)(int) ;	
 
-	map< char,  int >				myMap; 
-	map< char,  int >::iterator		myIter;
+	//map< char,  int >				myMap; 
+	//map< char,  int >::iterator		myIter;
 
-	map< const char*, MyFunType >	createMap;
+	//map< const char*, MyFunType >	createMap;
 
-	myMap[ 'a' ] = 5;
-	//int a = myMap[ 'a' ]; // sbagliato
+	//myMap[ 'a' ] = 5;
+	////int a = myMap[ 'a' ]; // sbagliato
 
-	myIter = myMap.find( 'a' );
-	if ( myIter != myMap.end() )
-		int a = myIter->second;
+	//myIter = myMap.find( 'a' );
+	//if ( myIter != myMap.end() )
+	//	int a = myIter->second;
 	
 
 	cout << endl << endl;

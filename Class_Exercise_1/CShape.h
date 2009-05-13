@@ -27,7 +27,7 @@ public:
 
 	virtual void	SaveXml ( XMLNode& ) = 0;
 
-	typedef	std::map< const char*, CreateFromXmlType > CreationMapType;
+	typedef	std::map< std::string, CreateFromXmlType > CreationMapType;
 	typedef	CreationMapType::iterator CreationMapIter;
 
 	static CreationMapType	gCreateFromXmlMap;

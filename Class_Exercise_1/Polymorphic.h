@@ -15,6 +15,8 @@ bool	Poly2();
 
 list< CShape* >	ReadXml_();
 
+bool	Poly3();
+
 bool	ReadXml ( list< CShape* >& outShapes ) ;
 
 
