@@ -11,4 +11,3 @@ bool FunctExer3 ();
 
 bool FunctExerciseX();
 
-// Perché un bool???
