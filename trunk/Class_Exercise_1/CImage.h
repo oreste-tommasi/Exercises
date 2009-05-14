@@ -5,9 +5,9 @@
 #include <string>
 #include <vector>
 
-// project includes
-
+// global namespace declaration
 using namespace std;
+
 
 class CImage
 {
@@ -31,10 +31,11 @@ public:
 	
 
 	bool						GetPix( unsigned int inRow, unsigned int inCol, vector< unsigned char >& inVec ); 
-	bool						SetPix( unsigned int inRow, unsigned int inCol, vector< unsigned char >& inVec  );
+	bool						SetPix( unsigned int inRow, unsigned int inCol, vector< unsigned char >& inVec );
 
 	bool						Fill( vector< unsigned char >& inColour );
 	static CImage*			CreateFromFile( );
+	bool						SaveToFile();
 
 private: 
 	unsigned int	mWidth;
