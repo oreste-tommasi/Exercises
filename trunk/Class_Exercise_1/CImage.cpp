@@ -30,13 +30,13 @@ CImage::CImage (unsigned int inW, unsigned int inH,
 //	 GetPix
 // --------------------------------------------------------------------------
 bool
-CImage::GetPix( unsigned int inRow, unsigned int inCol, vector< unsigned char >& inVec  )
+CImage::GetPix( unsigned int inX, unsigned int inY, vector< unsigned char >& inVec  )
 {
 	inVec.resize(0);
-	if ( (inCol > mWidth) || (inRow > mHeight) )
+	if ( (inX >= mWidth) || (inY >= mHeight) )
 		return false;		
 		
-	unsigned char*	tempPtr= mPtr + ((inRow-1)*mWidth + (inCol-1))*mNChannel*mBpp;
+	unsigned char*	tempPtr= mPtr + ( inY*mWidth + inX )*mNChannel*mBpp;
 	for (int i=0; i != mNChannel*mBpp; ++i)
 		inVec.push_back(*(tempPtr+i));
 					
@@ -49,12 +49,12 @@ CImage::GetPix( unsigned int inRow, unsigned int inCol, vector< unsigned char >&
 // --------------------------------------------------------------------------
 
 bool
-CImage::SetPix( unsigned int inRow, unsigned int inCol, vector< unsigned char >& inVec  )
+CImage::SetPix( unsigned int inX, unsigned int inY, vector< unsigned char >& inVec  )
 {
-	if ( (inCol > mWidth) || (inRow > mHeight) || inVec.size()!= mNChannel )
+	if ( (inX >= mWidth) || (inY >= mHeight) || inVec.size()!= mNChannel )
 		return false;		
 		
-	unsigned char* tempPtr= mPtr + ((inRow-1)*mWidth + (inCol-1))*mNChannel*mBpp;
+	unsigned char* tempPtr= mPtr + ( inY*mWidth + inX )*mNChannel*mBpp;
 	vector< unsigned char >::iterator myIter=inVec.begin();
 	
 	for (int i=0; i != mNChannel*mBpp; ++i, ++myIter)
@@ -74,9 +74,9 @@ CImage::Fill( vector< unsigned char >& inColour )
 	if ( inColour.size()!= mNChannel )
 		return false;		
 	
-	for (int i=0; i != mWidth*mHeight; ++i )
+	for ( int i=0; i != mWidth*mHeight; ++i )
 	{
-		for (int k=0; k != mNChannel; ++k)
+        for ( int k=0; k != mNChannel; ++k )
 			(*(mPtr+i*mNChannel+k))=inColour[k];
 	}
 	return true;
@@ -110,43 +110,48 @@ CImage::CreateFromFile( )
 	int currPos = imgInput.tellg();
 	imgInput.seekg( 0, ios_base::end );
 	int endPos = imgInput.tellg();
-   imgInput.seekg( currPos, ios_base::beg ); 
+	imgInput.seekg( currPos, ios_base::beg ); 
 
 	int	imgBpp(1); 
 	int	imgNChan(3); 
 	int	streamSizeNum = imgWidth*imgHeight*imgBpp*imgNChan;
 
 	if ( endPos - currPos != streamSizeNum )
+	{
 		cout << "Image dimension error!" << endl;
+		return NULL;
+	}
 	else
+	{	
 		cout << "Image dimensions are correct" << endl;
 
-	char* myBuffer= new char[streamSizeNum];
-	imgInput.read( myBuffer, streamSizeNum );
+		char* myBuffer= new char[streamSizeNum];
+		imgInput.read( myBuffer, streamSizeNum );
 
-	//stting-up image from data
+		//stting-up image from data
 
-	CImage* myImg= new CImage( imgWidth, imgHeight, "TL", imgNChan, "rgb" );
+		CImage* myImg= new CImage( imgWidth, imgHeight, "TL", imgNChan, "rgb" );
 
-	vector< unsigned char > pixVec;
+		vector< unsigned char > pixVec;
 
-	for (int row=1; row != myImg->GetHeight()+1 ; ++row)
-	{
-		for (int col=1; col != myImg->GetWidth()+1 ; ++col)
+		for (int y=0; y < myImg->GetHeight() ; ++y)
 		{
-			pixVec.resize(0);
-			for (int k=0; k!= imgNChan; ++k)
+			for (int x=0; x < myImg->GetWidth() ; ++x)
 			{
-				pixVec.push_back( *(myBuffer+(( row-1 )*myImg->GetWidth() 
-									+( col-1 ))*myImg->GetNChannel()*imgBpp+k ));
+				pixVec.resize(0);
+				for (int k=0; k!= imgNChan; ++k)
+				{
+					pixVec.push_back( *(myBuffer+( y *myImg->GetWidth() 
+										+ x )*myImg->GetNChannel()*imgBpp+k ));
+				}
+				myImg->SetPix( x, y, pixVec);
 			}
-			myImg->SetPix( row, col, pixVec);
 		}
+
+		delete[] myBuffer;
+	
+		return myImg;
 	}
-
-	delete[] myBuffer;
-
-	return myImg;
 }
 
 // --------------------------------------------------------------------------
@@ -172,5 +177,80 @@ CImage::SaveToFile()
 	imgOutput.write( reinterpret_cast< char* > ( mPtr ), mISize );
 
 	return true;
+	
+}
+
+// --------------------------------------------------------------------------
+//	 CopyImg
+// --------------------------------------------------------------------------
+
+bool
+CImage::CopyImg( CImage& outImg, const CRect inRecSrc, const CRect inRecDst)
+{
+	CRect recInImg ( CPoint(0,0), CPoint( mWidth, mHeight ) );
+	CRect recOutImg( CPoint(0,0), CPoint( outImg.GetWidth(), outImg.GetHeight()) );
+
+
+	bool checkInside1=  recInImg.Inside(inRecSrc) && 
+						recInImg.Inside(inRecSrc);
+
+	bool checkInside2=  recOutImg.Inside(inRecDst) && 
+						recOutImg.Inside(inRecDst);
+
+
+	bool checkDimRects=
+	( (inRecSrc.GetRB().GetX()-inRecSrc.GetLT().GetX()) ==
+	  (inRecDst.GetRB().GetX()-inRecDst.GetLT().GetX()) ) &&
+	( (inRecSrc.GetRB().GetY()-inRecSrc.GetLT().GetY()) ==
+	  (inRecDst.GetRB().GetY()-inRecDst.GetLT().GetY()) );
+
+	if ( checkInside1 && checkInside2 && checkDimRects )
+	{
+		vector< unsigned char >  myVec;
+		for (int	myX = static_cast< int > ( inRecSrc.GetLT().GetX() ); 
+					myX <  inRecSrc.GetRB().GetX() ; ++myX )
+		{
+			for (int	myY = static_cast< int > (inRecSrc.GetLT().GetY() ); 
+						myY <  inRecSrc.GetRB().GetY() ; ++myY )
+			{
+				this->GetPix( myX, myY , myVec );
+				outImg.SetPix(	static_cast< int > ( inRecDst.GetLT().GetX() + myX - inRecSrc.GetLT().GetX() ), 
+								static_cast< int > ( inRecDst.GetLT().GetY() + myY - inRecSrc.GetLT().GetY() ), 
+								myVec );
+			}
+		}
+		return true;
+	}
+	else
+	{
+		cout << "\nPARAMETRI NON CORRETTI\n\n";
+		return false;
+	}
+}
+
+
+// --------------------------------------------------------------------------
+//	Draw()
+// --------------------------------------------------------------------------
+void
+CImage::Draw()
+{
+	vector< unsigned char > myVec;
+	
+	for( int myY=0; myY < mHeight; ++myY )
+	{
+		for ( int myX=0; myX < mWidth; ++myX )
+		{
+			this->GetPix( myX, myY, myVec );		
+			vector< unsigned char >::const_iterator myIter;
+			//cout << "[";
+			for ( myIter = myVec.begin(); myIter != myVec.end(); ++myIter )
+				cout << *myIter << " ";
+			cout << " ";
+		}
+		cout << "\n";
+	}
+	cout << "\n\n";
+	return;
 }
 

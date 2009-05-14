@@ -19,6 +19,7 @@ public:
 	void			Shift( const CPoint& inPShift );
 	bool 			Intersect( const CRect& inRect );
 	bool 			Inside( const CPoint& inP );
+	bool 			Inside( const CRect& inRect );
 	CPoint			GetLT() const { return mLT; };
 	CPoint			GetRB() const { return mRB; };
 	void			Draw();

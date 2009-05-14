@@ -4,6 +4,9 @@
 // system includes
 #include <string>
 #include <vector>
+#include <iostream>
+// project includes
+#include "CRect.h"
 
 // global namespace declaration
 using namespace std;
@@ -13,7 +16,7 @@ class CImage
 {
 public:
 		
-	CImage ( unsigned int inW, unsigned int inH, 
+	CImage (	unsigned int inW, unsigned int inH, 
 				const string& inOrig, int inNChan, 
 				const string& inCMod ) ;
 
@@ -30,12 +33,15 @@ public:
 	string					GetCModel() const { return mCModel; } 
 	
 
-	bool						GetPix( unsigned int inRow, unsigned int inCol, vector< unsigned char >& inVec ); 
-	bool						SetPix( unsigned int inRow, unsigned int inCol, vector< unsigned char >& inVec );
+	bool					GetPix( unsigned int inX, unsigned int inY, vector< unsigned char >& inVec ); 
+	bool					SetPix( unsigned int inX, unsigned int inY, vector< unsigned char >& inVec  );
+	bool					CopyImg( CImage& outImg, const CRect inRecSrc, const CRect inRecDst);
 
-	bool						Fill( vector< unsigned char >& inColour );
+	bool					Fill( vector< unsigned char >& inColour );
 	static CImage*			CreateFromFile( );
 	bool						SaveToFile();
+
+	void					Draw();
 
 private: 
 	unsigned int	mWidth;
