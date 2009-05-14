@@ -1,10 +1,10 @@
 // system includes
+#include <iostream>
+#include <fstream>
 
 
 // project includes
 #include "CImage.h"
-
-// global namespace declaration
 
 
 // --------------------------------------------------------------------------
@@ -62,7 +62,6 @@ CImage::SetPix( unsigned int inRow, unsigned int inCol, vector< unsigned char >&
 		(*(tempPtr+i))=*(myIter);
 	}
 	return true;
-
 }
 
 // --------------------------------------------------------------------------
@@ -90,18 +89,88 @@ CImage::Fill( vector< unsigned char >& inColour )
 CImage*	
 CImage::CreateFromFile( )
 {
-	ifstream	fileInput( "image.ppm" );
-	string header;
-	int theWidth, theHeight, theColour;
-	string data;
+	ifstream	imgInput( "Test.ppm", ios_base::binary );
 
-	// insert controls
+	//data reading from file
 
-	fileInput >> theWidth;
-	fileInput >> theHeight;
-	fileInput >> theColour;
-	fileInput >> data;
+	string headInutile;
+	imgInput >> headInutile;
 
-	//translate data in CImage sense
+	unsigned int imgWidth, imgHeight;
+	imgInput >> imgWidth >> imgHeight;
+	
+	int inutile2;
+	imgInput >> inutile2;
+
+	char ch;
+	imgInput.get(ch);
+
+	//Image dimensions check
+
+	int currPos = imgInput.tellg();
+	imgInput.seekg( 0, ios_base::end );
+	int endPos = imgInput.tellg();
+   imgInput.seekg( currPos, ios_base::beg ); 
+
+	int	imgBpp(1); 
+	int	imgNChan(3); 
+	int	streamSizeNum = imgWidth*imgHeight*imgBpp*imgNChan;
+
+	if ( endPos - currPos != streamSizeNum )
+		cout << "Image dimension error!" << endl;
+	else
+		cout << "Image dimensions are correct" << endl;
+
+	char* myBuffer= new char[streamSizeNum];
+	imgInput.read( myBuffer, streamSizeNum );
+
+	//stting-up image from data
+
+	CImage* myImg= new CImage( imgWidth, imgHeight, "TL", imgNChan, "rgb" );
+
+	vector< unsigned char > pixVec;
+
+	for (int row=1; row != myImg->GetHeight()+1 ; ++row)
+	{
+		for (int col=1; col != myImg->GetWidth()+1 ; ++col)
+		{
+			pixVec.resize(0);
+			for (int k=0; k!= imgNChan; ++k)
+			{
+				pixVec.push_back( *(myBuffer+(( row-1 )*myImg->GetWidth() 
+									+( col-1 ))*myImg->GetNChannel()*imgBpp+k ));
+			}
+			myImg->SetPix( row, col, pixVec);
+		}
+	}
+
+	delete[] myBuffer;
+
+	return myImg;
+}
+
+// --------------------------------------------------------------------------
+//	 SaveToFile
+// --------------------------------------------------------------------------
+
+bool	
+CImage::SaveToFile()
+{
+	ofstream	imgOutput( "Test2.ppm", ios_base::binary );
+
+	//data writing to file
+
+	imgOutput << "P6";
+	imgOutput << '\n';
+
+	imgOutput << mWidth << " " << mHeight;
+	imgOutput << '\n';
+
+	imgOutput << "255";
+	imgOutput << '\n';
+	
+	imgOutput.write( reinterpret_cast< char* > ( mPtr ), mISize );
+
 	return true;
 }
+

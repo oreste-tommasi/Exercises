@@ -1,8 +1,8 @@
 // system includes
 #include <iostream>
 #include <vector>
-#include <list>
-#include <map>
+//#include <list>
+//#include <map>
 
 
 
@@ -10,18 +10,18 @@
 using namespace std;
 
 // project includes
-#include "CPolyLine.h"
-#include "CRect.h"
-#include "Test.h"
-#include "NotPolymorphic.h"
-#include "Polymorphic.h"
-
-#include "xmlParser.h"
+//#include "CPolyLine.h"
+//#include "CRect.h"
+//#include "Test.h"
+//#include "NotPolymorphic.h"
+//#include "Polymorphic.h"
+#include "CImage.h"
+//#include "xmlParser.h"
 
 
 
 int main ()
-{
+{ 
 	//FunctExer2();
 
 	//FunctExer3();
@@ -30,8 +30,11 @@ int main ()
 
 	//FunctionNoPolymorphic();
 
-	Poly3();
+	//Poly3();
 
+	CImage* imgPtr = CImage::CreateFromFile();
+
+	imgPtr->SaveToFile();
 
 
 	//typedef	 void(*MyFunType)(int) ;	
@@ -51,6 +54,8 @@ int main ()
 
 	cout << endl << endl;
 	system("pause");
+
+	delete imgPtr;
 
 	return 0;
 
