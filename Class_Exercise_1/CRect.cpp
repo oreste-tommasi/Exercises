@@ -3,6 +3,7 @@
 #include <string>
 #include <sstream>
 
+
 // project includes
 #include "CRect.h"
 
@@ -152,4 +153,32 @@ CRect::SaveXml ( XMLNode& inNode )
 	io.addAttribute( "rby", strStreamRBY.str().c_str() );
 
 	return;
+}
+
+// --------------------------------------------------------------------------
+//	 RClipping 
+// --------------------------------------------------------------------------
+CRect
+CRect::RClipping( const CRect& inRect )
+{
+
+	if (!(this->Intersect( inRect )))
+	{
+		cout << "\nNon c'è intersezione\n";
+		return inRect;
+	}
+	
+	//if ( this->Inside( inRect ) )
+	//	return inRect;
+
+	CPoint outLT (	max ( mLT.GetX(), inRect.GetLT().GetX() ), 
+					max ( mLT.GetY(), inRect.GetLT().GetY() ) );
+	CPoint outRB (	min ( mRB.GetX(), inRect.GetRB().GetX() ), 
+					min ( mRB.GetY(), inRect.GetRB().GetY() ) );
+
+	CRect outRect( outLT, outRB );
+	return outRect;
+
+	
+
 }

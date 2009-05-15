@@ -10,7 +10,6 @@
 #include "CPolyLine.h"
 #include "CImage.h"
 
-
 // global namespace declaration
 using namespace std;
 
@@ -145,6 +144,54 @@ FunctExerciseX()
 	return true;
 }
 
+
+// --------------------------------------------------------------------------
+//	 FunctExerCopyImgandSave
+// --------------------------------------------------------------------------
+bool
+FunctExerCopyImgandSave()
+{
+	CImage myImgA ( 10, 6, "LT", 1, "rgb" );
+	CImage myImgB ( 10, 6, "LT", 1, "rgb" );
+
+	vector< unsigned char > myColour;
+	
+	myColour.push_back( 12 );
+	//myColour.push_back( 12 );
+	//myColour.push_back( 12 );
+
+	myImgA.Fill( myColour );
+
+    myColour.resize( 0 );
+	myColour.push_back( 50 );
+	//myColour.push_back( 20 );
+	//myColour.push_back( 20 );
+	myImgA.SetPix( 2, 3, myColour ); //metto un pixel diverso nel rettangolo che copio
+
+	myColour.resize( 0 );
+	myColour.push_back( 55 );
+	//myColour.push_back( 5 );
+	//myColour.push_back( 5 );
+	myImgB.Fill( myColour );
+
+	myImgA.Draw();
+	
+	myImgB.Draw();
+	
+
+	myImgA.CopyImg( myImgB, CRect ( CPoint (3,1),  CPoint(10,6) ), 
+							CRect ( CPoint (3,1),  CPoint(10,6) ) );
+
+
+	myImgB.Draw();
+
+		CImage* imgPtr = CImage::CreateFromFile();
+
+	imgPtr->SaveToFile();
+	delete imgPtr;
+
+	return true;
+}
 // --------------------------------------------------------------------------
 //	 ImageCopy
 // --------------------------------------------------------------------------
