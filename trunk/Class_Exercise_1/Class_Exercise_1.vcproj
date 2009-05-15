@@ -149,6 +149,9 @@
 				RelativePath=".\main.cpp">
 			</File>
 			<File
+				RelativePath=".\mymath.h">
+			</File>
+			<File
 				RelativePath=".\NotPolymorphic.cpp">
 			</File>
 			<File
