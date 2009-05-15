@@ -58,8 +58,6 @@ int main ()
 	cout << endl << endl;
 	system("pause");
 
-	delete imgPtr;
-
 	return 0;
 
 }

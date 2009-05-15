@@ -21,6 +21,10 @@ public:
 				const string& inCMod ) ;
 
 	
+	CImage (	const char* inFileName	);
+
+
+
 
 	virtual ~CImage() { delete[] mPtr; } 
 

@@ -1,6 +1,7 @@
 // system includes
 #include <iostream>
 #include <fstream>
+#include <string>
 
 
 // project includes
@@ -27,59 +28,49 @@ CImage::CImage (unsigned int inW, unsigned int inH,
 }
 
 // --------------------------------------------------------------------------
-//	 GetPix
-// --------------------------------------------------------------------------
-bool
-CImage::GetPix( unsigned int inX, unsigned int inY, vector< unsigned char >& inVec  )
-{
-	inVec.resize(0);
-	if ( (inX >= mWidth) || (inY >= mHeight) )
-		return false;		
-		
-	unsigned char*	tempPtr= mPtr + ( inY*mWidth + inX )*mNChannel*mBpp;
-	for (int i=0; i != mNChannel*mBpp; ++i)
-		inVec.push_back(*(tempPtr+i));
-					
-	return true;
-
-}
-
-// --------------------------------------------------------------------------
-//	 SetPix
+//	 CImage
 // --------------------------------------------------------------------------
 
-bool
-CImage::SetPix( unsigned int inX, unsigned int inY, vector< unsigned char >& inVec  )
-{
-	if ( (inX >= mWidth) || (inY >= mHeight) || inVec.size()!= mNChannel )
-		return false;		
-		
-	unsigned char* tempPtr= mPtr + ( inY*mWidth + inX )*mNChannel*mBpp;
-	vector< unsigned char >::iterator myIter=inVec.begin();
+CImage::CImage ( const char* inFileName )
+: mOrigin( "LT" )
+, mBpp(1)
+, mNChannel(3)
+, mCModel( "rgb" )
+{	ifstream fileInput ( inFileName, ios_base::binary );
 	
-	for (int i=0; i != mNChannel*mBpp; ++i, ++myIter)
-	{
-		(*(tempPtr+i))=*(myIter);
-	}
-	return true;
-}
+	//data reading from file
+	string headInutile;
+	fileInput >> headInutile;
 
-// --------------------------------------------------------------------------
-//	 Fill
-// --------------------------------------------------------------------------
-
-bool
-CImage::Fill( vector< unsigned char >& inColour )
-{
-	if ( inColour.size()!= mNChannel )
-		return false;		
+	fileInput >> mWidth >> mHeight;
 	
-	for ( int i=0; i != mWidth*mHeight; ++i )
+	int inutile2;
+	fileInput >> inutile2;
+
+	char ch;
+	fileInput.get(ch);
+
+    //Image dimensions check
+
+	int currPos = fileInput.tellg();
+	fileInput.seekg( 0, ios_base::end );
+	int endPos = fileInput.tellg();
+	fileInput.seekg( currPos, ios_base::beg ); 
+
+
+
+	mISize = mWidth*mHeight*mBpp*mNChannel;
+
+	if ( endPos - currPos != mISize )
 	{
-        for ( int k=0; k != mNChannel; ++k )
-			(*(mPtr+i*mNChannel+k))=inColour[k];
+		cout << "Image dimension error!" << endl;	
+
 	}
-	return true;
+	else
+	{		
+		mPtr= new unsigned char[mISize];
+		fileInput.read( reinterpret_cast< char* >(mPtr), mISize );
+	}
 }
 
 // --------------------------------------------------------------------------
@@ -153,6 +144,66 @@ CImage::CreateFromFile( )
 		return myImg;
 	}
 }
+
+
+
+
+// --------------------------------------------------------------------------
+//	 GetPix
+// --------------------------------------------------------------------------
+bool
+CImage::GetPix( unsigned int inX, unsigned int inY, vector< unsigned char >& inVec  )
+{
+	inVec.resize(0);
+	if ( (inX >= mWidth) || (inY >= mHeight) )
+		return false;		
+		
+	unsigned char*	tempPtr= mPtr + ( inY*mWidth + inX )*mNChannel*mBpp;
+	for (int i=0; i != mNChannel*mBpp; ++i)
+		inVec.push_back(*(tempPtr+i));
+					
+	return true;
+
+}
+
+// --------------------------------------------------------------------------
+//	 SetPix
+// --------------------------------------------------------------------------
+
+bool
+CImage::SetPix( unsigned int inX, unsigned int inY, vector< unsigned char >& inVec  )
+{
+	if ( (inX >= mWidth) || (inY >= mHeight) || inVec.size()!= mNChannel )
+		return false;		
+		
+	unsigned char* tempPtr= mPtr + ( inY*mWidth + inX )*mNChannel*mBpp;
+	vector< unsigned char >::iterator myIter=inVec.begin();
+	
+	for (int i=0; i != mNChannel*mBpp; ++i, ++myIter)
+	{
+		(*(tempPtr+i))=*(myIter);
+	}
+	return true;
+}
+
+// --------------------------------------------------------------------------
+//	 Fill
+// --------------------------------------------------------------------------
+
+bool
+CImage::Fill( vector< unsigned char >& inColour )
+{
+	if ( inColour.size()!= mNChannel )
+		return false;		
+	
+	for ( int i=0; i != mWidth*mHeight; ++i )
+	{
+        for ( int k=0; k != mNChannel; ++k )
+			(*(mPtr+i*mNChannel+k))=inColour[k];
+	}
+	return true;
+}
+
 
 // --------------------------------------------------------------------------
 //	 SaveToFile

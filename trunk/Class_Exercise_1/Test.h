@@ -12,6 +12,7 @@ bool		FunctExer3 ();
 
 bool		FunctExerciseX();
 
+bool FunctExerCopyImgandSave();
 bool		ImageCopy();
 
 bool		ScaleCopy( CImage* inPtr);
