@@ -28,24 +28,29 @@ public:
 
 	virtual ~CImage() { delete[] mPtr; } 
 
-	unsigned int			GetWidth() const { return mWidth; } 
-	unsigned int			GetHeight() const { return mHeight; }
-	string					GetOrigin() const { return mOrigin; }
-	int						GetNChannel() const { return mNChannel; } 
+	unsigned int		GetWidth() const { return mWidth; } 
+	unsigned int		GetHeight() const { return mHeight; }
+	string				GetOrigin() const { return mOrigin; }
+	int					GetNChannel() const { return mNChannel; } 
+
+	int					GetBpp() const { return mBpp; } 
+	string				GetCModel() const { return mCModel; } 
+
+
+	bool				GetPix( unsigned int inX, unsigned int inY, vector< unsigned char >& inVec ); 
+	bool				SetPix( unsigned int inX, unsigned int inY, vector< unsigned char >& inVec  );
+	bool				CopyImg( CImage& outImg, const CRect inRecSrc, const CRect inRecDst);
+	CRect				ImgBoundRect(){ return CRect ( CPoint(0,0), CPoint( mWidth, mHeight ) ); }
+
+	bool				Fill( vector< unsigned char >& inColour );
+	static CImage*		CreateFromFile( );
+	bool				SaveToFile();
+
+	void				Draw();
+
+	void				Clipping( const CRect& inRecSrc, const CImage& inImgDst, const CRect inRecDst );				
+
 	
-	int						GetBpp() const { return mBpp; } 
-	string					GetCModel() const { return mCModel; } 
-	
-
-	bool						GetPix( unsigned int inX, unsigned int inY, vector< unsigned char >& inVec ); 
-	bool						SetPix( unsigned int inX, unsigned int inY, vector< unsigned char >& inVec  );
-	bool						CopyImg( CImage& outImg, const CRect inRecSrc, const CRect inRecDst);
-
-	bool						Fill( vector< unsigned char >& inColour );
-	static CImage*			CreateFromFile( );
-	bool						SaveToFile();
-
-	void						Draw();
 
 private: 
 	unsigned int	mWidth;

@@ -6,6 +6,7 @@
 
 // project includes
 #include "CRect.h"
+#include "mymath.h"
 
 // global namespace declaration
 using namespace std;
@@ -178,7 +179,38 @@ CRect::RClipping( const CRect& inRect )
 
 	CRect outRect( outLT, outRB );
 	return outRect;
+}
+
+// --------------------------------------------------------------------------
+//	 MapPoints 
+// --------------------------------------------------------------------------
+// Mappa proporzionalmente i punti di inVec della 
+// configurazione di inSrcRect in quella di inDstRect
+void
+CRect::MapPoints( const CRect& inDstRect, 
+				  const vector< CPoint >& inVec, vector<CPoint>& outVec )
+{
+	double wRatio = this->GetWidth()/inDstRect.GetWidth();
+	double hRatio = this->GetHeight()/inDstRect.GetHeight();
+	
+	vector<CPoint>::const_iterator myIter;
+	double myX, myY, temp;
+
+	for ( myIter= inVec.begin(); myIter != inVec.end() ; ++ myIter )
+	{
+		
+		temp = ( myIter->GetX() - mLT.GetX()+1 ) * wRatio;
+		myX = round_Int( temp ) -1 + inDstRect.GetLT().GetX();
+		temp = ( myIter->GetY() - mLT.GetY()+1 ) * hRatio;
+		myY = round_Int( temp ) -1 + inDstRect.GetLT().GetY();
+		outVec.push_back( CPoint( myX, myY ) );
+	}
+	
+	return;
+
+
+}
+
 
 	
 
-}

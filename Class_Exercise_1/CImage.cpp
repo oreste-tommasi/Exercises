@@ -306,3 +306,18 @@ CImage::Draw()
 	return;
 }
 
+
+
+// --------------------------------------------------------------------------
+//	Clipping()
+// --------------------------------------------------------------------------
+void
+Clipping( const CRect& inRecSrc, const CImage& inImgDst, const CRect inRecDst )
+{
+
+
+}
+
+
+	
+
