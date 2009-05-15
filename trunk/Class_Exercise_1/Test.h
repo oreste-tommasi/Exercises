@@ -4,10 +4,15 @@
 // project includes
 #include "CRect.h"
 #include "CPolyLine.h"
+#include "CImage.h"
 
-bool FunctExer2 ();
+bool		FunctExer2 ();
 
-bool FunctExer3 ();
+bool		FunctExer3 ();
 
-bool FunctExerciseX();
+bool		FunctExerciseX();
+
+bool		ImageCopy();
+
+bool		ScaleCopy( CImage* inPtr);
 

@@ -33,15 +33,15 @@ public:
 	string					GetCModel() const { return mCModel; } 
 	
 
-	bool					GetPix( unsigned int inX, unsigned int inY, vector< unsigned char >& inVec ); 
-	bool					SetPix( unsigned int inX, unsigned int inY, vector< unsigned char >& inVec  );
-	bool					CopyImg( CImage& outImg, const CRect inRecSrc, const CRect inRecDst);
+	bool						GetPix( unsigned int inX, unsigned int inY, vector< unsigned char >& inVec ); 
+	bool						SetPix( unsigned int inX, unsigned int inY, vector< unsigned char >& inVec  );
+	bool						CopyImg( CImage& outImg, const CRect inRecSrc, const CRect inRecDst);
 
-	bool					Fill( vector< unsigned char >& inColour );
+	bool						Fill( vector< unsigned char >& inColour );
 	static CImage*			CreateFromFile( );
 	bool						SaveToFile();
 
-	void					Draw();
+	void						Draw();
 
 private: 
 	unsigned int	mWidth;
