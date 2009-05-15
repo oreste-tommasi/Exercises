@@ -8,6 +8,7 @@
 // project includes
 //#include "CRect.h"
 #include "CPolyLine.h"
+#include "CImage.h"
 
 
 // global namespace declaration
@@ -143,4 +144,60 @@ FunctExerciseX()
 
 	return true;
 }
+
+// --------------------------------------------------------------------------
+//	 ImageCopy
+// --------------------------------------------------------------------------
+bool 
+ImageCopy()
+{
+	CImage myImgA ( 10, 6, "LT", 1, "rgb" );
+	CImage myImgB ( 10, 6, "LT", 1, "rgb" );
+
+	vector< unsigned char > myColour;
+	
+	myColour.push_back( 12 );
+
+	myImgA.Fill( myColour );
+
+	myColour.resize( 0 );
+	myColour.push_back( 50 );
+	
+	myImgA.SetPix( 2, 3, myColour ); //metto un pixel diverso nel rettangolo che copio
+
+	myColour.resize( 0 );
+	myColour.push_back( 55 );
+	
+	myImgB.Fill( myColour );
+
+	myImgA.Draw();
+	
+	myImgB.Draw();
+	
+
+	myImgA.CopyImg( myImgB, CRect ( CPoint (2,3), CPoint(10,6) ), 
+							CRect ( CPoint (2,0), CPoint(10,6) ) );
+
+
+	myImgB.Draw();
+
+	return true;
+}
+
+// --------------------------------------------------------------------------
+//	 ScaleCopy
+// --------------------------------------------------------------------------
+bool 
+ScaleCopy( CImage* inPtr)
+{
+	CImage myImg( 400, 200 , "LT", 3, "rgb" );
+
+	inPtr->CopyImg( myImg, CRect ( CPoint (2,3), CPoint(210,75) ), 
+							CRect ( CPoint (35,40), CPoint(50,190) ) );
+
+	myImg.SaveToFile();
+	
+	return true;
+}
+
 

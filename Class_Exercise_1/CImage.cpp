@@ -89,7 +89,7 @@ CImage::Fill( vector< unsigned char >& inColour )
 CImage*	
 CImage::CreateFromFile( )
 {
-	ifstream	imgInput( "Test.ppm", ios_base::binary );
+	ifstream	imgInput( "prova.ppm", ios_base::binary );
 
 	//data reading from file
 
@@ -134,9 +134,9 @@ CImage::CreateFromFile( )
 
 		vector< unsigned char > pixVec;
 
-		for (int y=0; y < myImg->GetHeight() ; ++y)
+		for (unsigned int y=0; y < myImg->GetHeight() ; ++y)
 		{
-			for (int x=0; x < myImg->GetWidth() ; ++x)
+			for (unsigned int x=0; x < myImg->GetWidth() ; ++x)
 			{
 				pixVec.resize(0);
 				for (int k=0; k!= imgNChan; ++k)
@@ -190,6 +190,8 @@ CImage::CopyImg( CImage& outImg, const CRect inRecSrc, const CRect inRecDst)
 	CRect recInImg ( CPoint(0,0), CPoint( mWidth, mHeight ) );
 	CRect recOutImg( CPoint(0,0), CPoint( outImg.GetWidth(), outImg.GetHeight()) );
 
+	double rWidthRatio (inRecSrc.GetWidth()/inRecDst.GetWidth());
+	double rHeightRatio (inRecSrc.GetHeight()/inRecDst.GetHeight());
 
 	bool checkInside1=  recInImg.Inside(inRecSrc) && 
 						recInImg.Inside(inRecSrc);
@@ -197,26 +199,25 @@ CImage::CopyImg( CImage& outImg, const CRect inRecSrc, const CRect inRecDst)
 	bool checkInside2=  recOutImg.Inside(inRecDst) && 
 						recOutImg.Inside(inRecDst);
 
+	//bool checkDimRects=
+	//( (inRecSrc.GetRB().GetX()-inRecSrc.GetLT().GetX()) ==
+	//  (inRecDst.GetRB().GetX()-inRecDst.GetLT().GetX()) ) &&
+	//( (inRecSrc.GetRB().GetY()-inRecSrc.GetLT().GetY()) ==
+	//  (inRecDst.GetRB().GetY()-inRecDst.GetLT().GetY()) );
 
-	bool checkDimRects=
-	( (inRecSrc.GetRB().GetX()-inRecSrc.GetLT().GetX()) ==
-	  (inRecDst.GetRB().GetX()-inRecDst.GetLT().GetX()) ) &&
-	( (inRecSrc.GetRB().GetY()-inRecSrc.GetLT().GetY()) ==
-	  (inRecDst.GetRB().GetY()-inRecDst.GetLT().GetY()) );
-
-	if ( checkInside1 && checkInside2 && checkDimRects )
+	if ( checkInside1 && checkInside2 )
 	{
 		vector< unsigned char >  myVec;
-		for (int	myX = static_cast< int > ( inRecSrc.GetLT().GetX() ); 
-					myX <  inRecSrc.GetRB().GetX() ; ++myX )
+		for (int	x = static_cast< int > ( inRecDst.GetLT().GetX() ); 
+					x <  inRecDst.GetRB().GetX() ; ++x )
 		{
-			for (int	myY = static_cast< int > (inRecSrc.GetLT().GetY() ); 
-						myY <  inRecSrc.GetRB().GetY() ; ++myY )
+			for (int	y = static_cast< int > (inRecDst.GetLT().GetY() ); 
+						y <  inRecDst.GetRB().GetY() ; ++y )
 			{
-				this->GetPix( myX, myY , myVec );
-				outImg.SetPix(	static_cast< int > ( inRecDst.GetLT().GetX() + myX - inRecSrc.GetLT().GetX() ), 
-								static_cast< int > ( inRecDst.GetLT().GetY() + myY - inRecSrc.GetLT().GetY() ), 
-								myVec );
+				GetPix ( static_cast< int > ((( rWidthRatio-1 )/ 2 + ( x-inRecDst.GetLT().GetX())*rWidthRatio ) + inRecSrc.GetLT().GetX() + 0.5 ), 
+							static_cast< int > ((( rHeightRatio-1 )/ 2 + ( y-inRecDst.GetLT().GetY())*rHeightRatio ) + inRecSrc.GetLT().GetY() + 0.5 ), 
+							myVec );
+				outImg.SetPix( x, y , myVec );
 			}
 		}
 		return true;
