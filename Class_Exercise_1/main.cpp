@@ -20,8 +20,6 @@ using namespace std;
 //#include "xmlParser.h"
 
 
-void PrintVector(const vector< unsigned char >& );
-
 int main ()
 { 
 
@@ -35,40 +33,17 @@ int main ()
 
 	//Poly3();
 
-	CImage* imgPtr = CImage::CreateFromFile();
+	//CImage* imgPtr = CImage::CreateFromFile();
 
-	ScaleCopy(imgPtr);
-
-
-	//typedef	 void(*MyFunType)(int) ;	
-
-	//map< char,  int >				myMap; 
-	//map< char,  int >::iterator		myIter;
-
-	//map< const char*, MyFunType >	createMap;
-
-	//myMap[ 'a' ] = 5;
-	////int a = myMap[ 'a' ]; // sbagliato
-
-	//myIter = myMap.find( 'a' );
-	//if ( myIter != myMap.end() )
-	//	int a = myIter->second;
+	CImage myImg( "Scritta.ppm");
 	
+	ClippingTest( &myImg );
 
 	cout << endl << endl;
 	system("pause");
+
 
 	return 0;
 
 }
 
-void
-PrintVector(const vector< unsigned char >& inVec)
-{
-	cout << "[ " ;
-	vector< unsigned char >::const_iterator myIter;
-	for ( myIter = inVec.begin(); myIter != inVec.end(); ++myIter )
-		cout << *myIter << " ";
-	cout << "]\n";
-	return;
-}

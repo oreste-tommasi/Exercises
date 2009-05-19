@@ -20,7 +20,7 @@ public:
 	double			GetY() const { return mY; }
 	static CShape*	CreateFromXml( XMLNode& currNode );//aggiunto
 	
-	virtual void	Draw();
+	virtual void	Draw() const;
 	virtual void	SaveXml ( XMLNode& inNode );
 	//static CPoint* CreateFromXml(XMLNode inNode); 
 

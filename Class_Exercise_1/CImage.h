@@ -37,18 +37,18 @@ public:
 	string				GetCModel() const { return mCModel; } 
 
 
-	bool				GetPix( unsigned int inX, unsigned int inY, vector< unsigned char >& inVec ); 
+	bool				GetPix( unsigned int inX, unsigned int inY, vector< unsigned char >& inVec ) const; 
 	bool				SetPix( unsigned int inX, unsigned int inY, vector< unsigned char >& inVec  );
-	bool				CopyImg( CImage& outImg, const CRect inRecSrc, const CRect inRecDst);
-	CRect				ImgBoundRect(){ return CRect ( CPoint(0,0), CPoint( mWidth, mHeight ) ); }
+	bool				CopyImg( CImage& outImg, const CRect inRecSrc, const CRect inRecDst) const;
+	CRect				ImgBoundRect() const { return CRect ( CPoint(0,0), CPoint( mWidth, mHeight ) ); }
 
 	bool				Fill( vector< unsigned char >& inColour );
 	static CImage*		CreateFromFile( );
-	bool				SaveToFile();
+	bool				SaveToFile( const char* inFileName );
 
 	void				Draw();
 
-	void				Clipping( const CRect& inRecSrc, const CImage& inImgDst, const CRect inRecDst );				
+	void				Clipping( CImage& inImgDst, const CRect& inRecSrc, const CRect& inRecDst );				
 
 	
 

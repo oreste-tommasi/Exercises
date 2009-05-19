@@ -21,7 +21,7 @@ public:
 	CShape () : mVisible(true) { gTotalShapes++; } 
 	virtual ~CShape() { ; } 
 
-	virtual void	Draw() = 0;
+	virtual void	Draw() const = 0;
 
 	static int		CreatedShapes() { return gTotalShapes; }
 

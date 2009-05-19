@@ -23,7 +23,7 @@ public:
 	CPolyLine();
 	~CPolyLine();
 
-	void				Draw();
+	void				Draw() const;
 
 	void				AddPoint( const CPoint& inP );
 	size_t				GetVertexCount() const

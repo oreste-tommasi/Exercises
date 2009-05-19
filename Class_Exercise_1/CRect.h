@@ -26,7 +26,7 @@ public:
 	void					SetExtremes( const CPoint& inP1, const CPoint& inP2 );
 	void					GetExtremes( CPoint& outLT, CPoint& outRB );
 	void					Shift( const CPoint& inPShift );
-	bool 					Intersect( const CRect& inRect );
+	bool 					Intersect( const CRect& inRect ) const;
     bool 					Inside( const CPoint& inP );
 	bool 					Inside( const CRect& inRect );
 	
@@ -34,15 +34,15 @@ public:
 	CPoint					GetRB() const { return mRB; };
 	double					GetWidth() const { return mRB.GetX()- mLT.GetX() ;};
 	double					GetHeight() const { return mRB.GetY()- mLT.GetY() ;};
-	CRect					RClipping(  const CRect& inRect );
+	CRect					RClipping(  const CRect& inRect ) const;
 
-	void					Draw();
+	void					Draw() const;
 	static CShape*			CreateFromXml( XMLNode& inNode ); 
 
 	virtual void			SaveXml ( XMLNode& inNode );
 
 	void					MapPoints( const CRect& inDstRect, 
-									   const vector< CPoint >& inVec, vector<CPoint>& outVec);
+									   const vector< CPoint >& inVec, vector<CPoint>& outVec) const;
 
 
 private: 
