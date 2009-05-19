@@ -2,11 +2,17 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
+
 
 
 // project includes
 #include "CImage.h"
+#include "mymath.h"
+//#include "CRect.h"
 
+// global namespace declaration
+using namespace std;
 
 // --------------------------------------------------------------------------
 //	 CImage
@@ -119,7 +125,7 @@ CImage::CreateFromFile( )
 		char* myBuffer= new char[streamSizeNum];
 		imgInput.read( myBuffer, streamSizeNum );
 
-		//stting-up image from data
+		//setting-up image from data
 
 		CImage* myImg= new CImage( imgWidth, imgHeight, "TL", imgNChan, "rgb" );
 
@@ -145,14 +151,12 @@ CImage::CreateFromFile( )
 	}
 }
 
-
-
-
 // --------------------------------------------------------------------------
 //	 GetPix
 // --------------------------------------------------------------------------
+
 bool
-CImage::GetPix( unsigned int inX, unsigned int inY, vector< unsigned char >& inVec  )
+CImage::GetPix( unsigned int inX, unsigned int inY, vector< unsigned char >& inVec  ) const
 {
 	inVec.resize(0);
 	if ( (inX >= mWidth) || (inY >= mHeight) )
@@ -163,7 +167,6 @@ CImage::GetPix( unsigned int inX, unsigned int inY, vector< unsigned char >& inV
 		inVec.push_back(*(tempPtr+i));
 					
 	return true;
-
 }
 
 // --------------------------------------------------------------------------
@@ -204,15 +207,14 @@ CImage::Fill( vector< unsigned char >& inColour )
 	return true;
 }
 
-
 // --------------------------------------------------------------------------
 //	 SaveToFile
 // --------------------------------------------------------------------------
 
 bool	
-CImage::SaveToFile()
+CImage::SaveToFile( const char* inFileName )
 {
-	ofstream	imgOutput( "Test2.ppm", ios_base::binary );
+	ofstream	imgOutput( inFileName, ios_base::binary );
 
 	//data writing to file
 
@@ -228,7 +230,6 @@ CImage::SaveToFile()
 	imgOutput.write( reinterpret_cast< char* > ( mPtr ), mISize );
 
 	return true;
-	
 }
 
 // --------------------------------------------------------------------------
@@ -236,7 +237,7 @@ CImage::SaveToFile()
 // --------------------------------------------------------------------------
 
 bool
-CImage::CopyImg( CImage& outImg, const CRect inRecSrc, const CRect inRecDst)
+CImage::CopyImg( CImage& outImg, const CRect inRecSrc, const CRect inRecDst) const
 {
 	CRect recInImg ( CPoint(0,0), CPoint( mWidth, mHeight ) );
 	CRect recOutImg( CPoint(0,0), CPoint( outImg.GetWidth(), outImg.GetHeight()) );
@@ -265,8 +266,8 @@ CImage::CopyImg( CImage& outImg, const CRect inRecSrc, const CRect inRecDst)
 			for (int	y = static_cast< int > (inRecDst.GetLT().GetY() ); 
 						y <  inRecDst.GetRB().GetY() ; ++y )
 			{
-				GetPix ( static_cast< int > ((( rWidthRatio-1 )/ 2 + ( x-inRecDst.GetLT().GetX())*rWidthRatio ) + inRecSrc.GetLT().GetX() + 0.5 ), 
-							static_cast< int > ((( rHeightRatio-1 )/ 2 + ( y-inRecDst.GetLT().GetY())*rHeightRatio ) + inRecSrc.GetLT().GetY() + 0.5 ), 
+				GetPix ( round_Int((( rWidthRatio-1 )/ 2 + ( x-inRecDst.GetLT().GetX())*rWidthRatio ) + inRecSrc.GetLT().GetX() ), 
+							round_Int((( rHeightRatio-1 )/ 2 + ( y-inRecDst.GetLT().GetY())*rHeightRatio ) + inRecSrc.GetLT().GetY()  ), 
 							myVec );
 				outImg.SetPix( x, y , myVec );
 			}
@@ -275,15 +276,15 @@ CImage::CopyImg( CImage& outImg, const CRect inRecSrc, const CRect inRecDst)
 	}
 	else
 	{
-		cout << "\nPARAMETRI NON CORRETTI\n\n";
+		cout << "\nNessuna copia effettuata,\nalmeno un rettangolo è esterno\n\n";
 		return false;
 	}
 }
 
-
 // --------------------------------------------------------------------------
 //	Draw()
 // --------------------------------------------------------------------------
+
 void
 CImage::Draw()
 {
@@ -306,16 +307,42 @@ CImage::Draw()
 	return;
 }
 
-
-
 // --------------------------------------------------------------------------
 //	Clipping()
 // --------------------------------------------------------------------------
+
 void
-Clipping( const CRect& inRecSrc, const CImage& inImgDst, const CRect inRecDst )
-{
+CImage::Clipping( CImage& inImgDst, const CRect& inRecSrc, const CRect& inRecDst )
+{	
+	CRect myDstInters( CPoint(0,0), CPoint(0,0) );
+	myDstInters = inRecDst.RClipping( inImgDst.ImgBoundRect() );
+	vector<CPoint> myInPoints;
+	vector<CPoint> myOutPoints;
 
+	myInPoints.push_back( myDstInters.GetLT() );
+	myInPoints.push_back( myDstInters.GetRB() );
 
+	inRecDst.MapPoints( inRecSrc, myInPoints, myOutPoints );
+
+	CRect mySrcRect( myOutPoints[0], myOutPoints[1] );
+	
+	mySrcRect = mySrcRect.RClipping( this->ImgBoundRect() ); //questo è il rect buono per la copia
+
+	//myInPoints.resize(0); // vuole un costruttore di default
+	myInPoints.pop_back();
+	myInPoints.pop_back();
+	myOutPoints.clear(); 
+	//myOutPoints.pop_back();
+	//myOutPoints.pop_back();
+
+	myInPoints.push_back( mySrcRect.GetLT() );
+	myInPoints.push_back( mySrcRect.GetRB() );
+
+	inRecSrc.MapPoints( inRecDst, myInPoints, myOutPoints );
+
+	this->CopyImg( inImgDst, mySrcRect, CRect( myOutPoints[0], myOutPoints[1] ) );
+
+	return;
 }
 
 

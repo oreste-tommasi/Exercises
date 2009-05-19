@@ -67,7 +67,7 @@ CRect::Shift( const CPoint& inPShift )
 //	 Intersect  
 // --------------------------------------------------------------------------
 bool 
-CRect::Intersect( const CRect& inRect )
+CRect::Intersect( const CRect& inRect ) const
 {
 	bool outBool;
 	outBool =	( mLT.GetX() < inRect.GetRB().GetX() ) &&
@@ -106,7 +106,7 @@ CRect::Inside( const CRect& inRect )
 //	 Draw
 // --------------------------------------------------------------------------
 void
-CRect::Draw()
+CRect::Draw() const
 {
 	mLT.Draw();
 	cout << "R";
@@ -160,7 +160,7 @@ CRect::SaveXml ( XMLNode& inNode )
 //	 RClipping 
 // --------------------------------------------------------------------------
 CRect
-CRect::RClipping( const CRect& inRect )
+CRect::RClipping( const CRect& inRect ) const
 {
 
 	if (!(this->Intersect( inRect )))
@@ -188,21 +188,21 @@ CRect::RClipping( const CRect& inRect )
 // configurazione di inSrcRect in quella di inDstRect
 void
 CRect::MapPoints( const CRect& inDstRect, 
-				  const vector< CPoint >& inVec, vector<CPoint>& outVec )
+				  const vector< CPoint >& inVec, vector<CPoint>& outVec ) const
 {
-	double wRatio = this->GetWidth()/inDstRect.GetWidth();
-	double hRatio = this->GetHeight()/inDstRect.GetHeight();
+	double wRatio = inDstRect.GetWidth()/this->GetWidth();
+	double hRatio = inDstRect.GetHeight()/this->GetHeight();
 	
 	vector<CPoint>::const_iterator myIter;
-	double myX, myY, temp;
+	double myX, myY;
 
 	for ( myIter= inVec.begin(); myIter != inVec.end() ; ++ myIter )
 	{
 		
-		temp = ( myIter->GetX() - mLT.GetX()+1 ) * wRatio;
-		myX = round_Int( temp ) -1 + inDstRect.GetLT().GetX();
-		temp = ( myIter->GetY() - mLT.GetY()+1 ) * hRatio;
-		myY = round_Int( temp ) -1 + inDstRect.GetLT().GetY();
+		myX = ( myIter->GetX() - mLT.GetX() ) * wRatio + inDstRect.GetLT().GetX();
+		//myX = round_Int( temp )  
+		//temp = ( myIter->GetY() - mLT.GetY() ) * hRatio;
+		myY = ( myIter->GetY() - mLT.GetY() ) * hRatio + inDstRect.GetLT().GetY();
 		outVec.push_back( CPoint( myX, myY ) );
 	}
 	

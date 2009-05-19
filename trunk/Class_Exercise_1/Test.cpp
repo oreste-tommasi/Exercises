@@ -15,6 +15,20 @@ using namespace std;
 
 
 // --------------------------------------------------------------------------
+//	 PrintVector
+// --------------------------------------------------------------------------
+void
+PrintVector(const vector< unsigned char >& inVec)
+{
+	cout << "[ " ;
+	vector< unsigned char >::const_iterator myIter;
+	for ( myIter = inVec.begin(); myIter != inVec.end(); ++myIter )
+		cout << *myIter << " ";
+	cout << "]\n";
+	return;
+}
+
+// --------------------------------------------------------------------------
 //	 FunctExer2
 // --------------------------------------------------------------------------
 bool FunctExer2 ()
@@ -187,7 +201,7 @@ FunctExerCopyImgandSave()
 
 		CImage* imgPtr = CImage::CreateFromFile();
 
-	imgPtr->SaveToFile();
+	imgPtr->SaveToFile( "Test4.ppm" );
 	delete imgPtr;
 
 	return true;
@@ -239,10 +253,26 @@ ScaleCopy( CImage* inPtr)
 {
 	CImage myImg( 400, 200 , "LT", 3, "rgb" );
 
-	inPtr->CopyImg( myImg, CRect ( CPoint (2,3), CPoint(210,75) ), 
-							CRect ( CPoint (35,40), CPoint(50,190) ) );
+	inPtr->CopyImg( myImg, CRect ( CPoint (350,50), CPoint(500,75) ), 
+							CRect ( CPoint (-200,50), CPoint(10,75) ) );
 
-	myImg.SaveToFile();
+	myImg.SaveToFile( "TestScale.ppm" );
+	
+	return true;
+}
+
+// --------------------------------------------------------------------------
+//	 ClippingTest
+// --------------------------------------------------------------------------
+bool 
+ClippingTest( CImage* inPtr)
+{
+	CImage myImg( 400, 200 , "LT", 3, "rgb" );
+
+	inPtr->Clipping( myImg, CRect ( CPoint (50,50), CPoint(400,275) ),  
+							CRect ( CPoint (50,25), CPoint(400,175) ) );
+
+	myImg.SaveToFile( "TestClipping.ppm" );
 	
 	return true;
 }

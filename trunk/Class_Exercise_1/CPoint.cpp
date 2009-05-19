@@ -57,7 +57,7 @@ CPoint::GetCoord( double& outX, double& outY ) const
 //	 Draw [virtual]
 // --------------------------------------------------------------------------
 void
-CPoint::Draw()
+CPoint::Draw() const
 {
 	std::cout << "(" << mX << "," << mY << ")";
 }

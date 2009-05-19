@@ -54,9 +54,9 @@ CPolyLine::AddPoint( const CPoint& inP )
 //	 Draw
 // --------------------------------------------------------------------------
 void
-CPolyLine::Draw()
+CPolyLine::Draw() const
 {
-	vector< CPoint >::iterator  myIter;
+	vector< CPoint >::const_iterator  myIter;
 	//double x, y;
 
 	for ( myIter=mVertices.begin(); myIter<(mVertices.end()-1); ++myIter)
