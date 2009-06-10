@@ -145,7 +145,7 @@ AudioConv::BrowseSlot( )
 
 	QStringList files = QFileDialog::getOpenFileNames ( 
 												this, tr("Select Audio Raw File."), 
-												"", "Audio raw (*.raw)", 0, 
+												"./tests/", "Audio raw (*.raw)", 0, 
 												QFileDialog::DontResolveSymlinks ); 
 	if ( files.size() )
 	{
