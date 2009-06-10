@@ -34,14 +34,15 @@ private:
 	Audio*			mOutAudio;
 
 	double			mFreqRatio;
-	unsigned			mCurrFrame;
+	unsigned			mCurrFrame; // currrent input frame to read
 	double			mCurrNeedPer; // percentage needed of current sample
 	int				mBytesPerSampleIn;
 	int				mBytesPerSampleOut;
 	double			mIntesityRatio;
 
-	void				DownSample();
-//	void				UpSample();
+	void				FreqDownSample();
+	void				FreqSame();
+	void				FreqUpSample();
 
 	bool				ReadToVector( std::vector< unsigned int> & outVec, int toRead );
 	bool				WriteToFrame( unsigned int inIdx, const std::vector< double >& inSamples );
