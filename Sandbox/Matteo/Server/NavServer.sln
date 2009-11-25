@@ -10,14 +10,19 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NavServerDll", "NavServerDl
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug_Example|Win32 = Debug_Example|Win32
 		Debug|Win32 = Debug|Win32
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29603FF7-4EEA-4B6A-A034-CE4B259FCD7E}.Debug_Example|Win32.ActiveCfg = Debug_Example|Win32
+		{29603FF7-4EEA-4B6A-A034-CE4B259FCD7E}.Debug_Example|Win32.Build.0 = Debug_Example|Win32
 		{29603FF7-4EEA-4B6A-A034-CE4B259FCD7E}.Debug|Win32.ActiveCfg = Debug|Win32
 		{29603FF7-4EEA-4B6A-A034-CE4B259FCD7E}.Debug|Win32.Build.0 = Debug|Win32
 		{29603FF7-4EEA-4B6A-A034-CE4B259FCD7E}.Release|Win32.ActiveCfg = Release|Win32
 		{29603FF7-4EEA-4B6A-A034-CE4B259FCD7E}.Release|Win32.Build.0 = Release|Win32
+		{65D2F68D-4748-448A-A740-C6863CEF5814}.Debug_Example|Win32.ActiveCfg = Debug_Example|Win32
+		{65D2F68D-4748-448A-A740-C6863CEF5814}.Debug_Example|Win32.Build.0 = Debug_Example|Win32
 		{65D2F68D-4748-448A-A740-C6863CEF5814}.Debug|Win32.ActiveCfg = Debug|Win32
 		{65D2F68D-4748-448A-A740-C6863CEF5814}.Debug|Win32.Build.0 = Debug|Win32
 		{65D2F68D-4748-448A-A740-C6863CEF5814}.Release|Win32.ActiveCfg = Release|Win32
