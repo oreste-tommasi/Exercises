@@ -44,6 +44,12 @@ extern "C"
 	#endif
 #endif
 
+// Forward declarations
+namespace Navionics 
+{
+	class NavContext;
+	class NavDraw;
+}
 
 // Defines ====================================================================================
 #define		NAVSERVER_VERSION						"NSERV000r0" 
@@ -54,6 +60,7 @@ extern "C"
 #define kNSerErr_OutOfMemory				-2
 #define kNSerErr_BadArgs					-3
 #define kNSerErr_OutBounds					-4
+#define kNSerErr_FileNotFound				-5
 
 
 // Typedefs ===================================================================================
@@ -81,10 +88,12 @@ typedef struct _NImage
 } NImage;
 
 
+
+
 // Functions ==================================================================================
 
 // initialization 
-NSERV_API NavServerError	NServ_Init();
+NSERV_API NavServerError	NServ_Init( const char* configurationFile );
 
 // image functions
 NSERV_API NavServerError	NServ_GetImage( NGeoRect inRect, NImage* outImage );
