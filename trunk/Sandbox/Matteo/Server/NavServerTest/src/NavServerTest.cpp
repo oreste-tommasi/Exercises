@@ -23,7 +23,8 @@ main(int argc, char* argv[])
 	cout << "\n NavServer version: " << NAVSERVER_VERSION << "\n\n";
 
 	//if ( kNSerErr_NoErr != NServ_Init( "conf.txt" ) )
-	if ( kNSerErr_NoErr != NServ_Init( "E:\\Devel\\G7C_3D\\QtGeocore\\Sandbox\\Matteo\\Server\\exe\\conf.txt" ) )
+	if ( kNSerErr_NoErr != NServ_Init( "X:\\NAV\\conf_x.txt" ) )
+		//"E:\\Devel\\G7C_3D\\QtGeocore\\Sandbox\\Matteo\\Server\\exe\\conf.txt" ) )
 	{
 		cout << "Error in NServ_Init\n";
 		return -1;
@@ -33,10 +34,10 @@ main(int argc, char* argv[])
 	NGeoRect	bounds;
 	NImage	image;
 
-	bounds.mWest	= 1572864;
-	bounds.mSouth	= 5242880;
-	bounds.mEast	= 2097152;
-	bounds.mNorth	= 5767168;
+	bounds.mWest	= 1112864;
+	bounds.mSouth	= 5417168;
+	bounds.mEast	= 1132864;
+	bounds.mNorth	= 5437168;
 
 	image.mSize.mWidth	= 512; 
 	image.mSize.mHeight	= 512;
