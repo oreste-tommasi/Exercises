@@ -14,6 +14,7 @@
 #include "NavDraw.h"
 #include "NavEnums.h"
 #include "NavScopedLock.h"
+#include "NavPath.h"
 using namespace Navionics;
 
 
@@ -22,8 +23,8 @@ using namespace Navionics;
 using namespace std;
 
 // Globals   ==================================================================================
-Navionics::NavContext*		gNavContext;
-Navionics::NavDraw*			gNavDraw;
+Navionics::NavContext*		gNavContext = 0;
+Navionics::NavDraw*			gNavDraw = 0;
 static const int				sNavSize = 512;
 Navionics::NavMutex			gMutex;
 
@@ -49,8 +50,19 @@ NServ_Init( const char* configurationFile )
 	return kNSerErr_NoErr;
 #else
 	NavScopedLock	waitFor( gMutex ); 
+	NavPath			path( configurationFile );
+	NavString		dbgPath = path.GetPath();
+	dbgPath.append( "dbg_init.txt" );
+
 	ofstream			dbg;
-	dbg.open( "C:\\NAV\\dbg_init.txt", ios_base::out | ios_base::app);
+	dbg.open( dbgPath.c_str(), ios_base::out );
+
+	// cleanup
+	if ( gNavContext )
+		delete gNavContext;
+	if ( gNavDraw )
+		delete gNavDraw;
+	//NavChart::GetInstance()->ReleaseChart();
 
 	gNavContext = new NavContext( sNavSize, sNavSize );
 	gNavDraw = new NavDraw( *gNavContext, false, false, 100, NavDraw::NORMAL_ZOOM );
@@ -58,7 +70,7 @@ NServ_Init( const char* configurationFile )
 	NavServerError		err = kNSerErr_NoErr;
 	ifstream				fin( configurationFile );
 	NavString			keyStr, fileName;
-	unsigned char		key[32];
+	unsigned char		key[33];
 
 	dbg << "* ConfigurationFile  " << configurationFile << endl << endl;
 
@@ -66,9 +78,24 @@ NServ_Init( const char* configurationFile )
 	{
 		fin >> fileName;
 		unsigned int len = (keyStr.size()<32)?keyStr.size():32;
-		memcpy( key, keyStr.c_str(), len );
-		dbg << "Key   " << keyStr << endl;
-		dbg << "File  " << fileName << endl;
+		if ( len < 20 )
+		{
+			int diff = 20-len;
+			for ( int i=0; i<20; ++i )
+			{
+				if ( i<diff )
+					key[i] = ' ';
+				else
+					key[i] = keyStr[i-diff];
+			}
+			len = 20;
+		}
+		else
+			memcpy( key, keyStr.c_str(), len );
+
+		key[len] = '\0';
+		dbg << "Key   :" << key << endl;
+		dbg << "File  :" << fileName << endl;
 		if ( ! NavChart::GetInstance()->AddKey( key, len ) )
 		{
 			err += kNSerErr_FileNotFound;
@@ -80,8 +107,7 @@ NServ_Init( const char* configurationFile )
 			dbg << "ERR - Could not add chart" << endl;
 		}
 	}
-	// return kNSerErr_FileNotFound;
-	
+		
 	dbg.flush();
 	return err;
 
@@ -137,8 +163,8 @@ NServ_GetImage( NGeoRect inRect, NImage* outImage )
 		}
 	}
 #else
-	NavScopedLock	waitFor( gMutex ); 
 
+#ifdef _DEBUG
 	ofstream			dbg;
 	dbg.open( "C:\\NAV\\dbg_getimage.txt", ios_base::out | ios_base::app);
 
@@ -146,6 +172,9 @@ NServ_GetImage( NGeoRect inRect, NImage* outImage )
 	dbg.setf( ios::fixed, ios::floatfield);
 	dbg << endl << "Rect  W: " << inRect.mWest << " S: " << inRect.mSouth << endl
 		      << "      E: "  << inRect.mEast << " N: " << inRect.mNorth << endl;
+#endif
+
+	NavScopedLock	waitFor( gMutex ); 
 
 	int		south = (int)(inRect.mSouth+.5);
 	int		east = (int)(inRect.mEast+.5);
@@ -163,7 +192,6 @@ NServ_GetImage( NGeoRect inRect, NImage* outImage )
 		south = (int)(inRect.mNorth - scale*sNavSize + 0.5 );
 	}
 
-	dbg.flush();
 	if ( ! gNavDraw->SelectMaps( (int)(inRect.mWest+0.5), south, east, (int)(inRect.mNorth+0.5) ) )
 		return kNSerErr_OutBounds;
 	
@@ -171,14 +199,10 @@ NServ_GetImage( NGeoRect inRect, NImage* outImage )
 		return kNSerErr_Error;
 
 	Convert16To32( gNavDraw->GetImage()->mColorPtr, outImage );
-
-	dbg.flush();
 #endif
 	
 
-
 	return kNSerErr_NoErr;
-
 }
 
 #define	RED_565MASK			0xf800

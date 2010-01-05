@@ -47,29 +47,21 @@ jint JNICALL Java_com_abacogroup_dbmap_wms_tile_NavionicsDriver_getTile
 	jboolean		isVerCopy;
 	jbyte*		imageBuffer = env->GetByteArrayElements( outBA, &isVerCopy );
 
-	//jsize			len  = env->GetArrayLength(outBA); 
-	//if ( len < inSide*inSide*4 )
-	//	return kNSerErr_OutOfMemory;
-	//jbyte*		imageBuffer = (jbyte *)malloc(len * sizeof(jbyte));
-	// env->GetByteArrayRegion( outBA ,0, len, imageBuffer ); 
-
 	if ( imageBuffer )
 	{
 		theImage.mBuffer = (unsigned char*) imageBuffer;
 		err = NServ_GetImage( geoRect, &theImage );
+#ifdef _DEBUG
 		FILE* fd = fopen( "C:\\NAV\\test.raw", "wb+");
 		fwrite( imageBuffer, 1, theImage.mChannelCount* theImage.mSize.mWidth * theImage.mSize.mHeight, fd);
 		fclose( fd );
+#endif
 	}
 	else
 		err = kNSerErr_OutOfMemory;
 
-	//if ( isVerCopy )
+	if ( isVerCopy )
 		env->ReleaseByteArrayElements( outBA, imageBuffer, 0 ); 
-
-	//env->SetByteArrayRegion( outBA, 0, len, imageBuffer);
-	//env->ReleaseByteArrayElements( outBA, imageBuffer, 0 ); 
-	//free( imageBuffer );
 
 	return err;
 }
