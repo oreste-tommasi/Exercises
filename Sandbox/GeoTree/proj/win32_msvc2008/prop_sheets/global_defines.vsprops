@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="global_defines"
+	>
+	<Tool
+		Name="VCCLCompilerTool"
+		PreprocessorDefinitions="_CRT_SECURE_NO_WARNINGS=1;_CRT_NONSTDC_NO_WARNINGS=1;_CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES=1;_SCL_SECURE_NO_WARNINGS=1;GIH_MULTIPLE=1"
+	/>
+	<Tool
+		Name="VCLinkerTool"
+		GenerateManifest="false"
+	/>
+</VisualStudioPropertySheet>
