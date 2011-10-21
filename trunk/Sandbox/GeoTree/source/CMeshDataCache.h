@@ -19,6 +19,9 @@
 
 
 // forward declaration
+class CMeshTile;
+struct SMeshTileRequest;
+
 namespace gmi{
 	class CPixmap;
 }
@@ -31,9 +34,12 @@ struct MeshTileCluster
 	enum EClusterStatus
 	{
 		eClusterEmpty=0,
-		eClusterReady,
-		eClusterDecoding
+		eClusterLoading,
+		eClusterPngDecoding,
+		eClusterReady
 	};
+
+	static const int			kClusterSize=4;
 
 	struct TileClusterId
 	{
@@ -41,12 +47,15 @@ struct MeshTileCluster
 		unsigned int	level;
 		IPoint			mapId;
 
+		void TileToClusterId( const CMeshTile* inTile );
+
 		bool		operator <(const TileClusterId& b) const
 		{
 			return !(sourceId>=b.sourceId && level>=b.level && mapId.x>=b.mapId.x && mapId.y>=b.mapId.y); 
 		};
 	};
-	
+
+
 	TileClusterId	clusterId;
 
 	unsigned	int	refCount;
@@ -59,6 +68,10 @@ struct MeshTileCluster
 	void				Reset();
 	unsigned int	GetSize();
 
+	void				Lock();  ///< assures mutual exclusion on this object
+	void				Unlock(); ///< releases mutual exclusion on this object
+
+	std::list<SMeshTileRequest*>		addRequests;		///< requests associated to this cluster, to be splitted after loading and png decoding
 };
 
 // ==========================================================================
@@ -67,21 +80,18 @@ struct MeshTileCluster
 class CMeshDataCache
 {
 
-
 public:
 //	bool original;
-
-	// constructor and destructor
-							CMeshDataCache( unsigned int inMaxUnusedSize );
-	virtual				~CMeshDataCache();
-
+	static CMeshDataCache&	GetMeshDataCache(); ///< singleton access
+	
 	// initialization
 	MeshTileCluster*	GetCluster( MeshTileCluster::TileClusterId inId ); ///< add ref count
 	void					RestoreCluster( MeshTileCluster* inCluster ); ///< release ref count
 	
-
 protected:
-	// implementation data
+// constructor and destructor
+							CMeshDataCache( unsigned int inMaxUnusedSize );
+	virtual				~CMeshDataCache();
 
 
 	gmcu::CTCache<MeshTileCluster::TileClusterId, MeshTileCluster*>	mUsedClusters;
