@@ -43,7 +43,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(GEOFLYER_BASE_PATH)\GMCommonUtility&quot;;&quot;$(GEOFLYER_BASE_PATH)\Geometry&quot;"
+				AdditionalIncludeDirectories="..\..\source;&quot;$(GEOFLYER_BASE_PATH)\GMCommonUtility&quot;;&quot;$(GEOFLYER_BASE_PATH)\Geometry&quot;;&quot;$(GEOFLYER_BASE_PATH)\WorkFlow_prj\source&quot;;&quot;$(GEOFLYER_BASE_PATH)\Support\pthreads-w32-2-7-0\include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_LIB;_PCH_MONITOR_"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -110,7 +110,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/O2 /Ob1 /Ot"
-				AdditionalIncludeDirectories="&quot;$(GEOFLYER_BASE_PATH)\GMCommonUtility&quot;;&quot;$(GEOFLYER_BASE_PATH)\Geometry&quot;"
+				AdditionalIncludeDirectories="&quot;$(GEOFLYER_BASE_PATH)\GMCommonUtility&quot;;&quot;$(GEOFLYER_BASE_PATH)\Geometry&quot;;&quot;$(GEOFLYER_BASE_PATH)\WorkFlow_prj\source&quot;;&quot;$(GEOFLYER_BASE_PATH)\Support\pthreads-w32-2-7-0\include&quot;;../..source"
 				PreprocessorDefinitions="WIN32;NDEBUG;_LIB;_PCH_MONITOR_"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="false"
@@ -154,6 +154,26 @@
 	<References>
 	</References>
 	<Files>
+		<Filter
+			Name="implem"
+			>
+			<File
+				RelativePath="..\..\source\implem\CGeoflyerTerrain.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\source\implem\CGeoflyerTerrain.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\source\implem\SMeshTileRequest.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\source\implem\SMeshTileRequest.h"
+				>
+			</File>
+		</Filter>
 		<File
 			RelativePath="..\..\source\CGeoTerrain.cpp"
 			>
@@ -168,6 +188,22 @@
 		</File>
 		<File
 			RelativePath="..\..\source\CGeoTile.h"
+			>
+		</File>
+		<File
+			RelativePath="..\..\source\CMeshDataCache.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\source\CMeshDataCache.h"
+			>
+		</File>
+		<File
+			RelativePath="..\..\source\CMeshTile.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\source\CMeshTile.h"
 			>
 		</File>
 		<File

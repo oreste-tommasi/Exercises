@@ -27,31 +27,45 @@
 
 
 // forward declaration
+// --- internal classes
 class CGeoTile;
+class CMeshTile;
+
+// --- external classes
+namespace gmcu
+{
+	class CRequestServer;
+};
 
 
 class CGeoTerrain
 {
 public:
+							CGeoTerrain();
+	virtual				~CGeoTerrain();	
+	
 	enum EErrorCode
 	{
 		eNoError=0,
-		eInitializationErr,	///< not all structures have been set or created
+		eInitializationErr,	///< not all needed structures have been set or created
 		eOutOfMemErr,
-		eBadInitParamErr		///< incompatibility with some init param
+		eBadInitParamErr,		///< incompatibility with some init param
+		eConflictErr			///< more objects set or allocated with the same specific role
 	};
 
-							CGeoTerrain();
-	virtual				~CGeoTerrain();
 
 	// --- initialization
 	void					SetBounds( const GeoRect& inR ){ mBounds=inR; }
 	EErrorCode			CreateTileMap( int w, int h );
-	EErrorCode			SetValidBaseTile( int x, int y );
+	EErrorCode			SetupValidBaseTile( int x, int y );
+	void					SetDataServer( gmcu::CRequestServer* inServer ){ mDataServer=inServer; }
 
+	int					GetId() const { return mTerrainId; }; 
 
 protected:
 	GeoRect				mBounds;	///< in world geographic coords
+
+	virtual void		LoadMeshTile( CMeshTile* inTile )=0;
 
 	// ---------------------------------------------------------------------------
 	//	 CTileMap internal class
@@ -79,12 +93,18 @@ protected:
 		CGeoTile**			mMapPtr;
 	};
 
-	CTileMap*			mBaseTiles;
+	CTileMap*			mBaseTiles; ///< owned
 
 	EErrorCode			GetBaseTileRect( int x, int y, GeoRect& outR );
 
+	gmcu::CRequestServer*	mDataServer; ///< not owned
+
+
 private:
-	void					InitCommon();
+	static int			sGeoTerrainCounter;
+
+	int					mTerrainId;
+
 
 }; // class CGeoTerrain
 

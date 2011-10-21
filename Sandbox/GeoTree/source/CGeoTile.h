@@ -43,10 +43,14 @@ public:
 	virtual				~CGeoTile();
 
 	// initialization
-	void					SetTileRect( const GeoRect& inR ){ mTileBounds=inR; };
+	void					SetupTile( int inLevel, int posX, int posY, const GeoRect& inR );
+	void					SetTileRect( const GeoRect& inR ){ mBounds=inR; };
 
-private:
-	void					InitCommon();
+	int					GetLevel() const { return mLevel; };
+	const IPoint&		GetPosId() const { return mPosId; };
+
+	CGeoTerrain*		GetTerrain() const { return mTerrain; };
+	int					GetTerrainId() const;
 
 protected:
 	// implementation data
@@ -54,6 +58,7 @@ protected:
 
 	CGeoTile*		mParent;				///< ptr to parent tile, if any
 	int				mLevel;				///< tile level, with 0=root
+	IPoint			mPosId;				///< tile position, in its level; [0,0] is left top
 
 	enum ESubTileFlag
 	{
@@ -92,7 +97,7 @@ protected:
 	int						mSubTileCount;		///< how many sub-tiles there are currently
 
 	// --- geo-refs
-	GeoRect					mTileBounds;		///< in dataset (terrain) coords
+	GeoRect					mBounds;				///< in absolute world coords
 	double					mMinZ, mMaxZ;
 	FPoint3d					mCenter;				///< center of the tile in 3D absolute coords
 	double					mRadius;				///< radius of the sphere enclosing the tile
@@ -152,6 +157,9 @@ protected:
 		inline bool	operator()( const CGeoTile *t1, const CGeoTile *t2 ) const
 											{ return t1->mDistance < t2->mDistance; };
 	};
+
+private:
+	void					InitCommon();
 
 }; // class CGeoTile
 

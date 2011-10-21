@@ -14,8 +14,19 @@
 #include "precompiled.h"
 
 #include "CMeshDataCache.h"
+#include "CMeshTile.h"
 #include "CPixmap.h"
 
+// ---------------------------------------------------------------------------
+//	 GetMeshDataCache
+// ---------------------------------------------------------------------------
+CMeshDataCache& 
+CMeshDataCache::GetMeshDataCache()
+{
+	static	CMeshDataCache		theCache( 8*1024*1024 );
+
+	return theCache;
+}
 
 // ---------------------------------------------------------------------------
 //	 CMeshDataCache
@@ -143,4 +154,18 @@ unsigned int
 MeshTileCluster::GetSize()
 {
 	return meshImg ?	meshImg->GetImageSize() : 0;
+}
+
+// ---------------------------------------------------------------------------
+//	 TileToClusterId
+// ---------------------------------------------------------------------------
+void
+MeshTileCluster::TileClusterId::TileToClusterId( const CMeshTile* inTile )
+{
+	sourceId = inTile->GetTerrainId();
+	level = inTile->GetLevel();
+	mapId = inTile->GetPosId();
+
+	mapId.x = (mapId.x / kClusterSize) * kClusterSize;
+	mapId.y = (mapId.y / kClusterSize) * kClusterSize;
 }

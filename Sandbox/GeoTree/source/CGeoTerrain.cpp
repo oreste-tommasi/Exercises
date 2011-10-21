@@ -15,15 +15,18 @@
 
 
 #include "CGeoTerrain.h"
-#include "CGeoTile.h"
+#include "CRequestServer.h"
+#include "CMeshTile.h"
 
+int	CGeoTerrain::sGeoTerrainCounter = 0;
 
 // ---------------------------------------------------------------------------
 //	 CGeoTerrain
 // ---------------------------------------------------------------------------
 CGeoTerrain::CGeoTerrain()
 {
-	InitCommon();
+	mTerrainId = sGeoTerrainCounter; // actually not mutex protected yet
+	sGeoTerrainCounter++;
 } 
 
 // ---------------------------------------------------------------------------
@@ -48,23 +51,35 @@ CGeoTerrain::CreateTileMap( int w, int h )
 }
 
 // ---------------------------------------------------------------------------
-//	 SetValidTile
+//	 SetupValidBaseTile
 // ---------------------------------------------------------------------------
+/**
+ * Initializes a base tile assigning coord position, bounds, 
+ * and posting the loading request
+ *
+ * \param x horizontal tile coord
+ * \param y vertical tile coord
+ *
+ * \return error code
+ **/
 CGeoTerrain::EErrorCode  
-CGeoTerrain::SetValidBaseTile( int x, int y )
+CGeoTerrain::SetupValidBaseTile( int x, int y )
 {
-	if( !mBaseTiles || mBounds.Area()==0 || mBaseTiles->GetTile( x, y ) )
+	if( !mBaseTiles || mBounds.Area()==0 || mBaseTiles->GetTile( x, y ) || !mDataServer )
 		return eInitializationErr;
 
 	if( x<0 || x>=mBaseTiles->Width() || y<0 || y>=mBaseTiles->Height() )
 		return eBadInitParamErr;
 
-	CGeoTile*	newTile = new CGeoTile( this );
+	if( mBaseTiles->GetTile( x, y ) )
+		return eConflictErr;
+
+	CGeoTile*	newTile = new CMeshTile( this );
 
 	GeoRect	r;
 	GetBaseTileRect( x, y, r );
 	
-	newTile->SetTileRect( r );
+	newTile->SetupTile( 0, x, y, r );
 	mBaseTiles->SetTile( newTile, x, y );
 
 	return eNoError;
@@ -79,6 +94,7 @@ CGeoTerrain::SetValidBaseTile( int x, int y )
 void CGeoTerrain::InitCommon()
 {
 	mBaseTiles = NULL;
+	mDataServer = NULL;
 }
 
 // ---------------------------------------------------------------------------
@@ -98,6 +114,7 @@ CGeoTerrain::GetBaseTileRect( int x, int y, GeoRect& outR )
 
 	return eNoError;
 }
+
 
 // ***************************************************************************
 
