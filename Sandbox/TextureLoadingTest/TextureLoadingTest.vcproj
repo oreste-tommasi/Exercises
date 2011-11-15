@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;E:\Devel\Builder\GeoGraph\Support\glut-3.7.6\include&quot;;E:\Devel\Builder\GeoGraph\GeoGraph\OpenGL_Ext;E:\Devel\Builder\GeoGraph\GeoGraph;&quot;D:\Documents and Settings\devel\Desktop\002 gl_test - distribuzione - 2 pbo&quot;;&quot;E:\Devel\Builder\GeoGraph\Support\pthreads-w32-2-7-0\include&quot;"
+				AdditionalIncludeDirectories="&quot;../../GeoGraph/Support/glut-3.7.6\include&quot;;../../GeoGraph/GeoGraph/OpenGL_Ext;../../GeoGraph/GeoGraph;&quot;../../GeoGraph/Support/pthreads-w32-2-7-0/include&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -63,7 +63,7 @@
 				Name="VCLinkerTool"
 				AdditionalDependencies="pthreadvse2.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;E:\Devel\Builder\GeoGraph\Support\pthreads-w32-2-7-0\lib&quot;;&quot;E:\Devel\Builder\GeoGraph\Support\glut-3.7.6\lib&quot;"
+				AdditionalLibraryDirectories="&quot;../../GeoGraph\Support\pthreads-w32-2-7-0\lib&quot;;&quot;../../GeoGraph\Support\glut-3.7.6\lib&quot;"
 				GenerateDebugInformation="true"
 				SubSystem="1"
 				TargetMachine="1"
@@ -117,7 +117,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="&quot;E:\Devel\Builder\GeoGraph\Support\glut-3.7.6\include&quot;;E:\Devel\Builder\GeoGraph\GeoGraph\OpenGL_Ext;E:\Devel\Builder\GeoGraph\GeoGraph;&quot;D:\Documents and Settings\devel\Desktop\002 gl_test - distribuzione - 2 pbo&quot;;&quot;E:\Devel\Builder\GeoGraph\Support\pthreads-w32-2-7-0\include&quot;"
+				AdditionalIncludeDirectories="&quot;../../GeoGraph/Support/glut-3.7.6\include&quot;;../../GeoGraph/GeoGraph/OpenGL_Ext;../../GeoGraph/GeoGraph;&quot;../../GeoGraph/Support/pthreads-w32-2-7-0/include&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -138,7 +138,7 @@
 				Name="VCLinkerTool"
 				AdditionalDependencies="pthreadvse2.lib"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;E:\Devel\Builder\GeoGraph\Support\pthreads-w32-2-7-0\lib&quot;;&quot;E:\Devel\Builder\GeoGraph\Support\glut-3.7.6\lib&quot;"
+				AdditionalLibraryDirectories="&quot;../../GeoGraph\Support\pthreads-w32-2-7-0\lib&quot;;&quot;../../GeoGraph\Support\glut-3.7.6\lib&quot;"
 				GenerateDebugInformation="true"
 				SubSystem="1"
 				OptimizeReferences="2"
@@ -181,39 +181,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\CSem.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\CSem.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\..\Devel\Builder\GeoGraph\GeoGraph\OpenGL_Ext\glew.c"
-				>
-			</File>
-			<File
-				RelativePath=".\gmcuThread.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\gmcuThread.h"
-				>
-			</File>
-			<File
 				RelativePath=".\main.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\test_profiles.h"
-				>
-			</File>
-			<File
-				RelativePath="D:\Documents and Settings\devel\Desktop\002 gl_test - distribuzione - 2 pbo\Timer.cpp"
-				>
-			</File>
-			<File
-				RelativePath="D:\Documents and Settings\devel\Desktop\002 gl_test - distribuzione - 2 pbo\Timer.h"
 				>
 			</File>
 		</Filter>
@@ -231,15 +199,45 @@
 				>
 			</File>
 			<File
-				RelativePath=".\CTSafeQueue.h"
+				RelativePath=".\test_profiles.h"
 				>
 			</File>
 		</Filter>
 		<Filter
-			Name="Resource Files"
-			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
-			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
+			Name="Support"
 			>
+			<File
+				RelativePath=".\CSem.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CSem.h"
+				>
+			</File>
+			<File
+				RelativePath=".\CTSafeQueue.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\GeoGraph\GeoGraph\OpenGL_Ext\glew.c"
+				>
+			</File>
+			<File
+				RelativePath=".\gmcuThread.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\gmcuThread.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Timer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Timer.h"
+				>
+			</File>
 		</Filter>
 	</Files>
 	<Globals>
