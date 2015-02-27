@@ -205,8 +205,13 @@ namespace Mono.Samples.TexturedCube {
 			RenderCube ();
 		}
 
+		[DllImport("libMyNativeOpenglDynlib.so")]
+		public extern static int changeBgColor();
+
 		void RenderCube ()
 		{
+			int myCount = changeBgColor();
+
 			GL.Clear((int)All.ColorBufferBit | (int)All.DepthBufferBit);
 			GL.MatrixMode(All.Modelview);
 			GL.LoadIdentity();

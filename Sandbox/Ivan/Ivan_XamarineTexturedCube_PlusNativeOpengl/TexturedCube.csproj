@@ -61,7 +61,9 @@
     <AndroidResource Include="Resources\drawable-nodpi\app_texturedcube.png" />
     <AndroidResource Include="Resources\drawable-nodpi\f_spot.png" />
     <AndroidResource Include="Resources\layout\main.axml" />
-    <AndroidResource Include="Resources\values\strings.xml" />
+    <AndroidResource Include="Resources\values\strings.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-ldpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
@@ -76,5 +78,12 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="MyNativeOpenglDynlib\MyNativeOpenglDynlib.vcxproj">
+      <Project>{6bba3d6e-4c8c-45d4-b9ce-3c5568338d06}</Project>
+      <Name>MyNativeOpenglDynlib</Name>
+      <TargetPlatformIdentifier>Android</TargetPlatformIdentifier>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
