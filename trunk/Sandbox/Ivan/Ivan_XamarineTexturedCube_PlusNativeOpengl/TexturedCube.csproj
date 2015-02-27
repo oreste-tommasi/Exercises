@@ -10,7 +10,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Mono.Samples.TexturedCube</RootNamespace>
-    <AssemblyName>TexturedCube</AssemblyName>
+    <AssemblyName>Ivan_XamarineTexturedCube_PlusNativeOpengl</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
