@@ -37,4 +37,18 @@ extern "C" {
 	MyNativeOpenglDynlib::~MyNativeOpenglDynlib()
 	{
 	}
+
+	int clickCount = 1;
+	int changeBgColor() 
+	{
+		clickCount++;
+		
+		/*if( clickCount % 2 )
+			glClearColor(1.0, 0.0, 0.0, 1.0);
+		else
+			glClearColor(0.0, 1.0, 0.0, 1.0);*/
+
+		return clickCount;
+
+	}
 }
