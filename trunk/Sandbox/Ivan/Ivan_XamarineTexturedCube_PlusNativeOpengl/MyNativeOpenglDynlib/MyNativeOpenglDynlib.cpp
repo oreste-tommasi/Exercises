@@ -1,3 +1,6 @@
+#include <EGL/egl.h>
+#include <GLES/gl.h>
+
 #include "MyNativeOpenglDynlib.h"
 
 #define LOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO, "MyNativeOpenglDynlib", __VA_ARGS__))
@@ -43,10 +46,10 @@ extern "C" {
 	{
 		clickCount++;
 		
-		/*if( clickCount % 2 )
+		if( clickCount % 2 )
 			glClearColor(1.0, 0.0, 0.0, 1.0);
 		else
-			glClearColor(0.0, 1.0, 0.0, 1.0);*/
+			glClearColor(0.0, 1.0, 0.0, 1.0);
 
 		return clickCount;
 
