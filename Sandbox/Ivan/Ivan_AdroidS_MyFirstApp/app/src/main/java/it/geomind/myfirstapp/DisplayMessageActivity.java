@@ -3,6 +3,7 @@ package it.geomind.myfirstapp;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -16,12 +17,14 @@ public class DisplayMessageActivity extends ActionBarActivity {
 
         // Get the message from the intent
         Intent intent = getIntent();
-        String message = intent.getStringExtra(MyActivity.EXTRA_MESSAGE);
+        //String message = intent.getStringExtra(MyActivity.EXTRA_MESSAGE);
+        String message = callNative();
 
         // Create the text view
         TextView textView = new TextView(this);
         textView.setTextSize(40);
         textView.setText(message);
+        Log.i("NDK ", callNative());
 
         // Set the text view as the activity layout
         setContentView(textView);
@@ -41,4 +44,6 @@ public class DisplayMessageActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public native String callNative();
 }

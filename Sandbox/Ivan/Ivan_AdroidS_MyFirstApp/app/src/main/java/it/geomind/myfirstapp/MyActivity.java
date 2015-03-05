@@ -12,6 +12,10 @@ import android.widget.EditText;
 public class MyActivity extends ActionBarActivity {
     public final static String EXTRA_MESSAGE = "it.geomind.myfirstapp.MESSAGE";
 
+    static {
+        System.loadLibrary("ndkLib");
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
