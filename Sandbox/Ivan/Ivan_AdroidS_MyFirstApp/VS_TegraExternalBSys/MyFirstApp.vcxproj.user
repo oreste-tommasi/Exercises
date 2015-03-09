@@ -5,7 +5,7 @@
     <BuildXmlPath>D:\DEVEL\Builder\Sandbox\Ivan\Ivan_AdroidS_MyFirstApp\app\src\main</BuildXmlPath>
     <OverrideAPKPath>D:\DEVEL\Builder\Sandbox\Ivan\Ivan_AdroidS_MyFirstApp\app\build\outputs\apk\app-debug.apk</OverrideAPKPath>
     <GdbSetupPath />
-    <AdditionalLibraryDirectories>D:\DEVEL\Builder\Sandbox\Ivan\Ivan_AdroidS_MyFirstApp\app\src\main\obj\local\armeabi-v7a</AdditionalLibraryDirectories>
+    <AdditionalLibraryDirectories>D:\DEVEL\Builder\Sandbox\Ivan\Ivan_AdroidS_MyFirstApp\app\src\main\obj\local\$(ArchAbi)</AdditionalLibraryDirectories>
     <AdditionalGdbDirectories>$(ANDROID_NDK_ROOT)\platforms\android-19\arch-arm\usr\include;..\app\src\main\jni</AdditionalGdbDirectories>
     <JavaClassesDir>..\app\build\intermediates\classes\debug\</JavaClassesDir>
     <JavaSourceDir>$(ANDROID_HOME)\sources\android-19;..\app\src\main\java</JavaSourceDir>
