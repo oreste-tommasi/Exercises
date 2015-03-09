@@ -9,7 +9,7 @@
     </AdditionalLibraryDirectories>
     <AdditionalGdbDirectories />
     <JavaClassesDir>..\app\build\intermediates\classes\debug\</JavaClassesDir>
-    <JavaSourceDir>D:\Prog\Android\sdk\sources\android-19;..\app\src\main\java</JavaSourceDir>
+    <JavaSourceDir>$(ANDROID_HOME)\sources\android-19;..\app\src\main\java</JavaSourceDir>
     <DebuggerFlavor>AndroidDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>
