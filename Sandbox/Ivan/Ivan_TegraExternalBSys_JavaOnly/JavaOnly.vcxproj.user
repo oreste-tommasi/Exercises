@@ -8,8 +8,8 @@
     <AdditionalLibraryDirectories>
     </AdditionalLibraryDirectories>
     <AdditionalGdbDirectories />
-    <JavaClassesDir>D:\DEVEL\Builder\Sandbox\Ivan\Ivan_AdroidS_JavaOnly\app\build\intermediates\classes\debug\</JavaClassesDir>
-    <JavaSourceDir>D:\Prog\Android\sdk\sources\android-19;.\java</JavaSourceDir>
+    <JavaClassesDir>..\Ivan_AdroidS_JavaOnly\app\build\intermediates\classes\debug\</JavaClassesDir>
+    <JavaSourceDir>D:\Prog\Android\sdk\sources\android-19;..\Ivan_AdroidS_JavaOnly\app\src\main\java</JavaSourceDir>
     <DebuggerFlavor>AndroidDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>
