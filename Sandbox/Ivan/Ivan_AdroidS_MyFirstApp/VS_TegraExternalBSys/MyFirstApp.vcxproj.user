@@ -5,9 +5,10 @@
     <BuildXmlPath>D:\DEVEL\Builder\Sandbox\Ivan\Ivan_AdroidS_MyFirstApp\app\src\main</BuildXmlPath>
     <OverrideAPKPath>D:\DEVEL\Builder\Sandbox\Ivan\Ivan_AdroidS_MyFirstApp\app\build\outputs\apk\app-debug.apk</OverrideAPKPath>
     <GdbSetupPath />
-    <AdditionalLibraryDirectories>Symbols_directories</AdditionalLibraryDirectories>
-    <AdditionalGdbDirectories>Native_source_code_directories</AdditionalGdbDirectories>
+    <AdditionalLibraryDirectories>D:\DEVEL\Builder\Sandbox\Ivan\Ivan_AdroidS_MyFirstApp\app\src\main\obj\local\armeabi-v7a</AdditionalLibraryDirectories>
+    <AdditionalGdbDirectories>D:\Prog\Android\ndk\android-ndk-r10d\platforms\android-19\arch-arm\usr\include;D:\DEVEL\Builder\Sandbox\Ivan\Ivan_AdroidS_MyFirstApp\app\src\main\jni</AdditionalGdbDirectories>
     <JavaClassesDir>..\app\build\intermediates\classes\debug\</JavaClassesDir>
     <JavaSourceDir>D:\Prog\Android\sdk\sources\android-19;..\app\src\main\java</JavaSourceDir>
+    <DebuggerFlavor>AndroidDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>
