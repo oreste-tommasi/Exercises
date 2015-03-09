@@ -7,7 +7,7 @@
     <GdbSetupPath />
     <AdditionalLibraryDirectories />
     <AdditionalGdbDirectories />
-    <JavaClassesDir />
-    <JavaSourceDir />
+    <JavaClassesDir>..\app\build\intermediates\classes\debug\</JavaClassesDir>
+    <JavaSourceDir>D:\Prog\Android\sdk\sources\android-19;..\app\src\main\java</JavaSourceDir>
   </PropertyGroup>
 </Project>
