@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Tegra-Android'">
+    <AndroidAttach>False</AndroidAttach>
+    <BuildXmlPath>D:\DEVEL\Builder\Sandbox\Ivan\Ivan_AdroidS_JavaOnly\app\src\main</BuildXmlPath>
+    <OverrideAPKPath>D:\DEVEL\Builder\Sandbox\Ivan\Ivan_AdroidS_JavaOnly\app\build\outputs\apk\app-debug.apk</OverrideAPKPath>
+    <GdbSetupPath />
+    <AdditionalLibraryDirectories>
+    </AdditionalLibraryDirectories>
+    <AdditionalGdbDirectories />
+    <JavaClassesDir>..\app\build\intermediates\classes\debug\</JavaClassesDir>
+    <JavaSourceDir>D:\Prog\Android\sdk\sources\android-19;..\app\src\main\java</JavaSourceDir>
+    <DebuggerFlavor>AndroidDebugger</DebuggerFlavor>
+  </PropertyGroup>
+</Project>
