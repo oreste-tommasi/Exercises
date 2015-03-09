@@ -28,8 +28,7 @@
     </NMakeCleanCommandLine>
     <NMakePreprocessorDefinitions>
     </NMakePreprocessorDefinitions>
-    <NMakeIncludeSearchPath>
-    </NMakeIncludeSearchPath>
+    <NMakeIncludeSearchPath>D:\DEVEL\Builder\Sandbox\Ivan\Ivan_AdroidS_MyFirstApp\app\src\main\jni</NMakeIncludeSearchPath>
     <NMakeForcedIncludes>
     </NMakeForcedIncludes>
   </PropertyGroup>
