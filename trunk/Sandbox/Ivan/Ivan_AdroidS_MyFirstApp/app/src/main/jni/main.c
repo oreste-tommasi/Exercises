@@ -28,6 +28,6 @@ JNIEXPORT void JNICALL Java_it_geomind_myfirstapp_DisplayMessageActivity_callNat
 
    jstring str = (*env)->NewStringUTF( env, "AAAA!" );
 
-   return;
-    (*env)->CallVoidMethod( inTextView, mid, str );
+   //return;
+    (*env)->CallVoidMethod( env, inTextView, mid, str );
   }
