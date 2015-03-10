@@ -1,0 +1,3 @@
+cd app\src\main
+
+javah -d jni -classpath D:\Prog\Android\sdk\platforms\android-19\android.jar;D:\Prog\Android\sdk\extras\android\support\v7\appcompat\libs\android-support-v4.jar;D:\Prog\Android\sdk\extras\android\support\v7\appcompat\libs\android-support-v7-appcompat.jar;..\..\build\intermediates\classes\debug it.geomind.myfirstapp.DisplayMessageActivity

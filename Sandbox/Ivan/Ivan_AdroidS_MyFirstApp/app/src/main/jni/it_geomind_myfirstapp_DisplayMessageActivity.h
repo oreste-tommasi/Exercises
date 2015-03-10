@@ -71,6 +71,14 @@ extern "C" {
 JNIEXPORT jstring JNICALL Java_it_geomind_myfirstapp_DisplayMessageActivity_callNative
   (JNIEnv *, jobject);
 
+/*
+ * Class:     it_geomind_myfirstapp_DisplayMessageActivity
+ * Method:    callNativeWithTextView
+ * Signature: (Landroid/widget/TextView;)V
+ */
+JNIEXPORT void JNICALL Java_it_geomind_myfirstapp_DisplayMessageActivity_callNativeWithTextView
+  (JNIEnv *, jobject, jobject);
+
 #ifdef __cplusplus
 }
 #endif
