@@ -1,4 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-
+  <ItemGroup>
+    <Filter Include="NewFilter1">
+      <UniqueIdentifier>{cc835789-c388-484d-9706-cda173244bad}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <JCompile Include="..\app\build\generated\source\buildConfig\debug\it\geomind\myfirstapp\BuildConfig.java">
+      <Filter>NewFilter1</Filter>
+    </JCompile>
+    <JCompile Include="..\app\build\generated\source\r\debug\android\support\v7\appcompat\R.java">
+      <Filter>NewFilter1</Filter>
+    </JCompile>
+    <JCompile Include="..\app\build\generated\source\r\debug\it\geomind\myfirstapp\R.java">
+      <Filter>NewFilter1</Filter>
+    </JCompile>
+    <JCompile Include="..\app\src\androidTest\java\it\geomind\myfirstapp\ApplicationTest.java">
+      <Filter>NewFilter1</Filter>
+    </JCompile>
+    <JCompile Include="..\app\src\main\java\it\geomind\myfirstapp\DisplayMessageActivity.java">
+      <Filter>NewFilter1</Filter>
+    </JCompile>
+    <JCompile Include="..\app\src\main\java\it\geomind\myfirstapp\MyActivity.java">
+      <Filter>NewFilter1</Filter>
+    </JCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\app\src\main\jni\main.c">
+      <Filter>NewFilter1</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>

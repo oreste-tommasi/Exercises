@@ -13,6 +13,17 @@
       <Platform>Tegra-Android</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <JCompile Include="..\app\build\generated\source\buildConfig\debug\it\geomind\myfirstapp\BuildConfig.java" />
+    <JCompile Include="..\app\build\generated\source\r\debug\android\support\v7\appcompat\R.java" />
+    <JCompile Include="..\app\build\generated\source\r\debug\it\geomind\myfirstapp\R.java" />
+    <JCompile Include="..\app\src\androidTest\java\it\geomind\myfirstapp\ApplicationTest.java" />
+    <JCompile Include="..\app\src\main\java\it\geomind\myfirstapp\DisplayMessageActivity.java" />
+    <JCompile Include="..\app\src\main\java\it\geomind\myfirstapp\MyActivity.java" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\app\src\main\jni\main.c" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{BA2F519F-67AE-4F23-B199-42BBF48BD713}</ProjectGuid>
     <RootNamespace>MyFirstApp</RootNamespace>

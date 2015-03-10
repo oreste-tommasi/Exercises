@@ -24,7 +24,9 @@ public class DisplayMessageActivity extends ActionBarActivity {
         TextView textView = new TextView(this);
         textView.setTextSize(40);
         textView.setText(message);
-        Log.i("NDK ", callNative());
+        //Log.i("NDK ", callNative());
+
+        callNativeWithTextView( textView );
 
         // Set the text view as the activity layout
         setContentView(textView);
@@ -46,4 +48,5 @@ public class DisplayMessageActivity extends ActionBarActivity {
     }
 
     public native String callNative();
+    public native void callNativeWithTextView( TextView textView );
 }
