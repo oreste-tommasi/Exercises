@@ -47,6 +47,13 @@ public class DisplayMessageActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public int showAlertDialog( String inTitle, String inMsg )
+    {
+        MyAlertDialogFragment dialog = new MyAlertDialogFragment( inTitle, inMsg );
+        dialog.show( getSupportFragmentManager(), "MyAlertDialogFragment" );
+        return dialog.mChoiceCode;
+    }
+
     public native String callNative();
     public native void callNativeWithTextView( TextView textView );
 }
