@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{5A31A7F9-962F-41C6-9286-FE9338F2D247}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <NMakeBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /build "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeBuildCommandLine>
+    <NMakeCleanCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /clean "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /rebuild "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeReBuildCommandLine>
+    <NMakeIncludeSearchPath>D:\Prog\Android\ndk\android-ndk-r10d\platforms\android-9\arch-mips\usr\include;D:\Prog\Android\ndk\android-ndk-r10d\toolchains\mipsel-linux-android-4.8\prebuilt\windows-x86_64\lib\gcc\mipsel-linux-android\4.8\include;D:\Prog\Android\ndk\android-ndk-r10d\toolchains\mipsel-linux-android-4.8\prebuilt\windows-x86_64\lib\gcc\mipsel-linux-android\4.8\include-fixed;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+    <NMakeForcedIncludes>$(ProjectDir)\gcc_Debug.h;$(VISUALGDB_DIR)\gcc_compat.h;$(NMakeForcedIncludes)</NMakeForcedIncludes>
+    <NMakePreprocessorDefinitions>__VisualGDB_CFG_Debug;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <IncludePath />
+    <ReferencePath />
+    <LibraryPath />
+    <NMakeOutput>$(ProjectDir)VS_VisualGDB-Debug.vgdbsettings</NMakeOutput>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <NMakeBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /build "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeBuildCommandLine>
+    <NMakeCleanCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /clean "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /rebuild "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeReBuildCommandLine>
+    <NMakeIncludeSearchPath>D:\Prog\Android\ndk\android-ndk-r10d\platforms\android-9\arch-mips\usr\include;D:\Prog\Android\ndk\android-ndk-r10d\toolchains\mipsel-linux-android-4.8\prebuilt\windows-x86_64\lib\gcc\mipsel-linux-android\4.8\include;D:\Prog\Android\ndk\android-ndk-r10d\toolchains\mipsel-linux-android-4.8\prebuilt\windows-x86_64\lib\gcc\mipsel-linux-android\4.8\include-fixed;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+    <NMakeForcedIncludes>$(ProjectDir)\gcc_Release.h;$(VISUALGDB_DIR)\gcc_compat.h;$(NMakeForcedIncludes)</NMakeForcedIncludes>
+    <NMakePreprocessorDefinitions>__VisualGDB_CFG_Release;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <IncludePath />
+    <ReferencePath />
+    <LibraryPath />
+    <NMakeOutput>$(ProjectDir)VS_VisualGDB-Release.vgdbsettings</NMakeOutput>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <AndroidBuild Include="..\app\src\main\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\app\jni\Android.mk" />
+    <None Include="..\app\jni\Application.mk" />
+    <JCompile Include="..\app\src\androidTest\java\it\geomind\myfirstapp\ApplicationTest.java" />
+    <JCompile Include="..\app\src\main\java\it\geomind\myfirstapp\DisplayMessageActivity.java" />
+    <JCompile Include="..\app\src\main\java\it\geomind\myfirstapp\MyActivity.java" />
+    <JCompile Include="..\app\src\main\java\it\geomind\myfirstapp\MyAlertDialogFragment.java" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\app\jni\main.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\app\jni\it_geomind_myfirstapp_DisplayMessageActivity.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\app\src\main\res\layout\activity_display_message.xml" />
+    <Xml Include="..\app\src\main\res\layout\activity_my.xml" />
+    <Xml Include="..\app\src\main\res\menu\menu_display_message.xml" />
+    <Xml Include="..\app\src\main\res\menu\menu_my.xml" />
+    <Xml Include="..\app\src\main\res\values-w820dp\dimens.xml" />
+    <Xml Include="..\app\src\main\res\values\dimens.xml" />
+    <Xml Include="..\app\src\main\res\values\strings.xml" />
+    <Xml Include="..\app\src\main\res\values\styles.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\app\src\main\res\mipmap-hdpi\ic_launcher.png" />
+    <Image Include="..\app\src\main\res\mipmap-mdpi\ic_launcher.png" />
+    <Image Include="..\app\src\main\res\mipmap-xhdpi\ic_launcher.png" />
+    <Image Include="..\app\src\main\res\mipmap-xxhdpi\ic_launcher.png" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

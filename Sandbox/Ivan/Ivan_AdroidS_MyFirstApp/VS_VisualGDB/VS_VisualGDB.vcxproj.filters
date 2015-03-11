@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{3fb0890c-b99d-4129-9d66-2a070a165b9f}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{c5f64356-86ed-477e-991c-2c01bae5f304}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{262e2121-7fd7-4fa9-b17c-118e29b18577}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Java Source Files">
+      <UniqueIdentifier>{a2abcf7c-3260-44cc-a315-ca730cce1091}</UniqueIdentifier>
+      <Extensions>*.java</Extensions>
+    </Filter>
+    <Filter Include="Java Source Files\androidTest">
+      <UniqueIdentifier>{dc64c918-71b7-49e6-b0f9-a1edaf358fd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\androidTest\java">
+      <UniqueIdentifier>{20eede12-03ce-4700-9919-10fd780b0955}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\androidTest\java\it">
+      <UniqueIdentifier>{ba96187c-a1a6-425b-807a-61ef0740f7ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\androidTest\java\it\geomind">
+      <UniqueIdentifier>{3cea4b27-67ee-4c3b-b7d9-f3e6705b53d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\androidTest\java\it\geomind\myfirstapp">
+      <UniqueIdentifier>{1a9a81c6-2619-435d-9115-879d4c158330}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main">
+      <UniqueIdentifier>{a801c75a-e4ee-4d98-a76d-1c8d9f2e4eb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\java">
+      <UniqueIdentifier>{412acab6-2de6-4c24-9f17-ebfe50f850bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\java\it">
+      <UniqueIdentifier>{c7795a99-0780-4aa7-8e71-66f3d582f30d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\java\it\geomind">
+      <UniqueIdentifier>{db514e47-88c4-43eb-af46-29ec0f61d1f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\java\it\geomind\myfirstapp">
+      <UniqueIdentifier>{00580f3b-22ee-4902-98c4-a260b40ecc0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\jni">
+      <UniqueIdentifier>{17595bd1-6eb7-411b-b6de-374171857aa0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\res">
+      <UniqueIdentifier>{b95b2060-d13e-477a-9d95-647552197df7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\res\drawable">
+      <UniqueIdentifier>{7a21e254-2985-4039-a66f-ca901e4626c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\res\layout">
+      <UniqueIdentifier>{d46a8360-57f6-4641-8c45-0a72dd8d74d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\res\menu">
+      <UniqueIdentifier>{af1db429-16f6-43a9-a751-534f60aa5a22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\res\mipmap-hdpi">
+      <UniqueIdentifier>{9b35d018-b169-4120-bea1-10ca909434f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\res\mipmap-mdpi">
+      <UniqueIdentifier>{7dbfa99e-26da-4749-be38-7034e816f3d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\res\mipmap-xhdpi">
+      <UniqueIdentifier>{325b5394-d846-46c5-97a2-b591926cf230}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\res\mipmap-xxhdpi">
+      <UniqueIdentifier>{e07c8cac-d01e-4a74-81da-ec0206ad0d0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\res\values">
+      <UniqueIdentifier>{3847c249-b500-4562-93aa-6b6567e588ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\res\values-w820dp">
+      <UniqueIdentifier>{210d7643-1e40-435a-b80c-eae80b34fbc5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidBuild Include="..\app\src\main\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\app\jni\Android.mk" />
+    <None Include="..\app\jni\Application.mk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\app\jni\main.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\app\jni\it_geomind_myfirstapp_DisplayMessageActivity.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <JCompile Include="..\app\src\androidTest\java\it\geomind\myfirstapp\ApplicationTest.java">
+      <Filter>Java Source Files\androidTest\java\it\geomind\myfirstapp</Filter>
+    </JCompile>
+    <JCompile Include="..\app\src\main\java\it\geomind\myfirstapp\DisplayMessageActivity.java">
+      <Filter>Java Source Files\main\java\it\geomind\myfirstapp</Filter>
+    </JCompile>
+    <JCompile Include="..\app\src\main\java\it\geomind\myfirstapp\MyActivity.java">
+      <Filter>Java Source Files\main\java\it\geomind\myfirstapp</Filter>
+    </JCompile>
+    <JCompile Include="..\app\src\main\java\it\geomind\myfirstapp\MyAlertDialogFragment.java">
+      <Filter>Java Source Files\main\java\it\geomind\myfirstapp</Filter>
+    </JCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\app\src\main\res\layout\activity_display_message.xml">
+      <Filter>Java Source Files\main\res\layout</Filter>
+    </Xml>
+    <Xml Include="..\app\src\main\res\layout\activity_my.xml">
+      <Filter>Java Source Files\main\res\layout</Filter>
+    </Xml>
+    <Xml Include="..\app\src\main\res\menu\menu_display_message.xml">
+      <Filter>Java Source Files\main\res\menu</Filter>
+    </Xml>
+    <Xml Include="..\app\src\main\res\menu\menu_my.xml">
+      <Filter>Java Source Files\main\res\menu</Filter>
+    </Xml>
+    <Xml Include="..\app\src\main\res\values\dimens.xml">
+      <Filter>Java Source Files\main\res\values</Filter>
+    </Xml>
+    <Xml Include="..\app\src\main\res\values\strings.xml">
+      <Filter>Java Source Files\main\res\values</Filter>
+    </Xml>
+    <Xml Include="..\app\src\main\res\values\styles.xml">
+      <Filter>Java Source Files\main\res\values</Filter>
+    </Xml>
+    <Xml Include="..\app\src\main\res\values-w820dp\dimens.xml">
+      <Filter>Java Source Files\main\res\values-w820dp</Filter>
+    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\app\src\main\res\mipmap-hdpi\ic_launcher.png">
+      <Filter>Java Source Files\main\res\mipmap-hdpi</Filter>
+    </Image>
+    <Image Include="..\app\src\main\res\mipmap-mdpi\ic_launcher.png">
+      <Filter>Java Source Files\main\res\mipmap-mdpi</Filter>
+    </Image>
+    <Image Include="..\app\src\main\res\mipmap-xhdpi\ic_launcher.png">
+      <Filter>Java Source Files\main\res\mipmap-xhdpi</Filter>
+    </Image>
+    <Image Include="..\app\src\main\res\mipmap-xxhdpi\ic_launcher.png">
+      <Filter>Java Source Files\main\res\mipmap-xxhdpi</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

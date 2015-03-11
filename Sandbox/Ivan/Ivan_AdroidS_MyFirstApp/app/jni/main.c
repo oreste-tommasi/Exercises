@@ -18,16 +18,27 @@ JNIEXPORT jstring JNICALL Java_it_geomind_myfirstapp_DisplayMessageActivity_call
  * Signature: (Landroid/widget/TextView;)Ljava/lang/String;
  */
 JNIEXPORT void JNICALL Java_it_geomind_myfirstapp_DisplayMessageActivity_callNativeWithTextView
-  (JNIEnv * env, jobject obj, jobject inTextView )
-  {
-    jclass cls = (*env)->GetObjectClass(env, inTextView);
+( JNIEnv * env, jobject inDisplayMessageActivity, jobject inTextView )
+{
+	jclass cls = (*env)->GetObjectClass( env, inTextView );
 
-    jmethodID mid = (*env)->GetMethodID(env, cls, "setText", "(Ljava/lang/CharSequence;)V" );
-    if (mid == 0)
-      return;
+	jmethodID mid = (*env)->GetMethodID( env, cls, "setText", "(Ljava/lang/CharSequence;)V" );
+	if( mid == 0 )
+		return;
 
-   jstring str = (*env)->NewStringUTF( env, "AAAA!" );
+	jstring str = (*env)->NewStringUTF( env, "AAABA!" );
 
-   //return;
-    (*env)->CallVoidMethod( env, inTextView, mid, str );
-  }
+	(*env)->CallVoidMethod( env, inTextView, mid, str );
+
+	////////////////////////////////////////////////////////////////////
+
+	jclass cls2 = (*env)->GetObjectClass( env, inDisplayMessageActivity );
+	jmethodID mid2 = (*env)->GetMethodID( env, cls2, "showAlertDialog", "(Ljava/lang/String;Ljava/lang/String;)I" );
+
+	jstring alertTitle = (*env)->NewStringUTF( env, "alert title" );
+	jstring alertMsg = (*env)->NewStringUTF( env, "alert msg" );
+
+	int val = (*env)->CallIntMethod( env, inDisplayMessageActivity, mid2, alertTitle, alertMsg );
+
+	int gg = 0;
+}
