@@ -47,11 +47,12 @@ public class DisplayMessageActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public int showAlertDialog( String inTitle, String inMsg )
+    public void showAlertDialog( String inTitle, String inMsg )
     {
-        MyAlertDialogFragment dialog = new MyAlertDialogFragment( inTitle, inMsg );
+        String[] buttonString = { "cancel", "not now", "ok" };
+
+        MyAlertDialogFragment dialog = new MyAlertDialogFragment( inTitle, inMsg, buttonString, null );
         dialog.show( getSupportFragmentManager(), "MyAlertDialogFragment" );
-        return dialog.mChoiceCode;
     }
 
     public native String callNative();
