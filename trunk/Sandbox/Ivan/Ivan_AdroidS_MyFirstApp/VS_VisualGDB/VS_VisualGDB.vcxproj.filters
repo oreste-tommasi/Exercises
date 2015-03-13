@@ -89,13 +89,25 @@
     <None Include="..\app\jni\Application.mk" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\app\jni\main.c">
+    <ClCompile Include="..\app\jni\CGeoFlyerController.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\app\jni\DisplayMessageActivity.c">
       <Filter>Source files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\app\jni\CGeoFlyerController.h">
+      <Filter>Source files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\app\jni\CGeoFlyerDelegate.h">
+      <Filter>Source files</Filter>
+    </ClInclude>
     <ClInclude Include="..\app\jni\it_geomind_myfirstapp_DisplayMessageActivity.h">
-      <Filter>Header files</Filter>
+      <Filter>Source files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\app\jni\it_geomind_myfirstapp_GeoFlyerViewController.h">
+      <Filter>Source files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

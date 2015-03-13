@@ -54,4 +54,10 @@ public class MyActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
+    /** Called when the user clicks the Send button */
+    public void startGeoflyerActivity(View view) {
+        Intent intent = new Intent(this, GeoFlyerViewController.class);
+        startActivity(intent);
+    }
+
 }
