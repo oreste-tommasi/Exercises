@@ -18,17 +18,24 @@
 
 CFuffaDelegate kFuffaDelegate;
 
+struct EnvViewControllerPair
+{
+	JNIEnv* mJniEnv;
+	jobject mViewController;
+};
+
 
 // ---------------------------------------------------
-CGeoFlyerController::CGeoFlyerController( void* inJinEnv, void* inViewController )
+CGeoFlyerController::CGeoFlyerController( void* inViewController )
 {
-	mJniEnv = reinterpret_cast<JNIEnv*>( inJinEnv );
+	EnvViewControllerPair* evc = reinterpret_cast<EnvViewControllerPair*>( inViewController );
+
+	mJniEnv = evc->mJniEnv;
 
 	jint rs = mJniEnv->GetJavaVM( &mJvm );
    assert( rs == JNI_OK );
 	
-	jobject obj = reinterpret_cast<jobject>( inViewController );
-	mViewController = reinterpret_cast<jclass>(mJniEnv->NewGlobalRef(obj));
+	mViewController = reinterpret_cast<jclass>( mJniEnv->NewGlobalRef(evc->mViewController) );
 	
 	mDelegateCallback = 0;
 	mDelegate = 0;
@@ -123,8 +130,10 @@ extern "C" {
 JNIEXPORT jlong JNICALL Java_it_geomind_myfirstapp_GeoFlyerViewController_CreateGeoFlyerController
   (JNIEnv* inEnv, jobject inGeoFlyerViewControllerOwner )
 {
+	EnvViewControllerPair evc = { inEnv, inGeoFlyerViewControllerOwner };
+
 	return reinterpret_cast<jlong>( 
-			new CGeoFlyerController( inEnv, inGeoFlyerViewControllerOwner )
+			new CGeoFlyerController( &evc )
 		);
 }
 
