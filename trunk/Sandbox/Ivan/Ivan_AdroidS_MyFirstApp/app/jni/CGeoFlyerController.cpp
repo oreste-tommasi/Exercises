@@ -25,7 +25,7 @@ CGeoFlyerController::CGeoFlyerController( void* inJinEnv, void* inViewController
    assert( rs == JNI_OK );
 	
 	jobject obj = reinterpret_cast<jobject>( inViewController );
-	jclass mViewController = reinterpret_cast<jclass>(mJniEnv->NewGlobalRef(obj));
+	mViewController = reinterpret_cast<jclass>(mJniEnv->NewGlobalRef(obj));
 	
 	mDelegateCallback = 0;
 	mDelegate = 0;
