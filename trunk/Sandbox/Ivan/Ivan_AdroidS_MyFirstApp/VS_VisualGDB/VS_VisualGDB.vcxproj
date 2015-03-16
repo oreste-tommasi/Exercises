@@ -76,6 +76,7 @@
     <ClCompile Include="..\app\jni\DisplayMessageActivity.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\app\jni\CFuffaDelegate.h" />
     <ClInclude Include="..\app\jni\CGeoFlyerController.h" />
     <ClInclude Include="..\app\jni\CGeoFlyerDelegate.h" />
     <ClInclude Include="..\app\jni\it_geomind_myfirstapp_DisplayMessageActivity.h" />

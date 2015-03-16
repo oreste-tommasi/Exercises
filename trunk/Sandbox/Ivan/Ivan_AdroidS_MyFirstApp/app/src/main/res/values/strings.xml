@@ -11,4 +11,5 @@
     <string name="hello_world">Hello world!</string>
 
     <string name="title_activity_geoflyer">Geoflyer</string>
+    <string name="button_dialog_from_cpp">Show dialog through native c++</string>
 </resources>

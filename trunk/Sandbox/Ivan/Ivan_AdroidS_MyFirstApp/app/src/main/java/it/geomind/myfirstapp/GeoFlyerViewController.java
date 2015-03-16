@@ -1,7 +1,9 @@
 package it.geomind.myfirstapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.View;
 
 /**
 
@@ -13,12 +15,11 @@ public class GeoFlyerViewController extends ActionBarActivity implements MyAlert
         mGeoFlyerController = CreateGeoFlyerController();
     }
 
-    /*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_geo_flyer_view_controller);
     }
-    */
 
     @Override
     protected void finalize() throws Throwable
@@ -43,6 +44,10 @@ public class GeoFlyerViewController extends ActionBarActivity implements MyAlert
         }
     }
 
+    public void dialogFromCpp(View view) {
+        if( mGeoFlyerController != 0 )
+            GeoFlyerControllerShowDialog( mGeoFlyerController );
+    }
 
     public void messageBoxAndButtons( String inTitle, String inMsg, String[] inButtonStrings )
     {
@@ -61,5 +66,6 @@ public class GeoFlyerViewController extends ActionBarActivity implements MyAlert
 
     private native long CreateGeoFlyerController();
     private native void DestroyGeoFlyerController( long inGeoFlyerController );
+    private native void GeoFlyerControllerShowDialog( long inGeoFlyerController );
     private native void	OnMessageBoxResult( long inGeoFlyerController, int inChoice ); // from viewcontroller to this (GeoFlyerCOntroller will call the inCallback of the inDelegate)
 }

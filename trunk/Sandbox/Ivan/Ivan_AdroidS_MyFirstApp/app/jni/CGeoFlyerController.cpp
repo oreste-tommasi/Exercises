@@ -13,7 +13,10 @@
 #include <assert.h>
 
 #include "CGeoFlyerController.h"
+#include "CFuffaDelegate.h"
 #include "it_geomind_myfirstapp_GeoFlyerViewController.h"
+
+CFuffaDelegate kFuffaDelegate;
 
 
 // ---------------------------------------------------
@@ -63,7 +66,7 @@ CGeoFlyerController::MessageBox( const char* inTitle, const char* inMessage,
 
 	jobject viewController = GetViewController();
 	jclass cls = env->GetObjectClass( viewController );
-	jmethodID mid = env->GetMethodID( cls, "messageBox", "(Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/String[])V" );
+	jmethodID mid = env->GetMethodID( cls, "messageBoxAndButtons", "(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V" );
 	env->CallVoidMethod( viewController, mid, title, msg, buttonStrings );
 }
 
@@ -135,6 +138,24 @@ JNIEXPORT void JNICALL Java_it_geomind_myfirstapp_GeoFlyerViewController_Destroy
 {
 	CGeoFlyerController* ptr = reinterpret_cast<CGeoFlyerController*>(inCGeoFlyerControllerPtr);
 	delete( ptr );
+}
+
+
+/*
+ * Class:     it_geomind_myfirstapp_GeoFlyerViewController
+ * Method:    GeoFlyerControllerShowDialog
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_it_geomind_myfirstapp_GeoFlyerViewController_GeoFlyerControllerShowDialog
+  (JNIEnv* inEnv, jobject inGeoFlyerViewControllerOwner, jlong inCGeoFlyerControllerPtr )
+{
+	CGeoFlyerController* ptr = reinterpret_cast<CGeoFlyerController*>(inCGeoFlyerControllerPtr);
+
+	std::vector<std::string> buttonsStr;
+	buttonsStr.push_back( "cancel" );
+	buttonsStr.push_back( "ok" );
+
+	ptr->MessageBox( "titolo", "messaggio", buttonsStr, &kFuffaDelegate, CFuffaDelegate::callback );
 }
 
 /*
