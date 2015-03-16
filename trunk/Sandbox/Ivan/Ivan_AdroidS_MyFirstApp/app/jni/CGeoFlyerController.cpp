@@ -155,14 +155,15 @@ JNIEXPORT void JNICALL Java_it_geomind_myfirstapp_GeoFlyerViewController_Destroy
  * Method:    GeoFlyerControllerShowDialog
  * Signature: (J)V
  */
-JNIEXPORT void JNICALL Java_it_geomind_myfirstapp_GeoFlyerViewController_GeoFlyerControllerShowDialog
+JNIEXPORT void JNICALL Java_it_geomind_myfirstapp_GeoFlyerViewController_DebugGeoFlyerControllerShowDialog
   (JNIEnv* inEnv, jobject inGeoFlyerViewControllerOwner, jlong inCGeoFlyerControllerPtr )
 {
 	CGeoFlyerController* ptr = reinterpret_cast<CGeoFlyerController*>(inCGeoFlyerControllerPtr);
 
 	std::vector<std::string> buttonsStr;
-	buttonsStr.push_back( "cancel" );
-	buttonsStr.push_back( "ok" );
+	buttonsStr.push_back( "Negative/No/Cancel" );
+	buttonsStr.push_back( "Neutral/Not Now" );
+	buttonsStr.push_back( "Positive/Ok" );
 
 	ptr->MessageBox( "titolo", "messaggio", buttonsStr, &kFuffaDelegate, CFuffaDelegate::callback );
 }
