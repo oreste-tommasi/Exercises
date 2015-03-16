@@ -42,7 +42,7 @@ public:
 
 private: 
 	JavaVM*					mJvm;
-	JNIEnv*					mJniEnv;
+	JNIEnv*					mJniEnv;				// this is valid for the creation thread only
 	jobject					mViewController;	//
 	
 	GfDelegateCallback	mDelegateCallback;
