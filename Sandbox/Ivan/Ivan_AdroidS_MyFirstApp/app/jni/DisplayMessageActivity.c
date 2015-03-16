@@ -33,12 +33,12 @@ JNIEXPORT void JNICALL Java_it_geomind_myfirstapp_DisplayMessageActivity_callNat
 	////////////////////////////////////////////////////////////////////
 
 	jclass cls2 = (*env)->GetObjectClass( env, inDisplayMessageActivity );
-	jmethodID mid2 = (*env)->GetMethodID( env, cls2, "showAlertDialog", "(Ljava/lang/String;Ljava/lang/String;)I" );
+	jmethodID mid2 = (*env)->GetMethodID( env, cls2, "showAlertDialog", "(Ljava/lang/String;Ljava/lang/String;)V" );
 
 	jstring alertTitle = (*env)->NewStringUTF( env, "alert title" );
 	jstring alertMsg = (*env)->NewStringUTF( env, "alert msg" );
 
-	int val = (*env)->CallIntMethod( env, inDisplayMessageActivity, mid2, alertTitle, alertMsg );
+	(*env)->CallVoidMethod( env, inDisplayMessageActivity, mid2, alertTitle, alertMsg );
 
 	int gg = 0;
 }
