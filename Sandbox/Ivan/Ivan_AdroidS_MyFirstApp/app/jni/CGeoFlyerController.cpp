@@ -149,10 +149,9 @@ JNIEXPORT void JNICALL Java_it_geomind_myfirstapp_GeoFlyerViewController_Destroy
 	delete( ptr );
 }
 
-
 /*
  * Class:     it_geomind_myfirstapp_GeoFlyerViewController
- * Method:    GeoFlyerControllerShowDialog
+ * Method:    DebugGeoFlyerControllerShowDialog
  * Signature: (J)V
  */
 JNIEXPORT void JNICALL Java_it_geomind_myfirstapp_GeoFlyerViewController_DebugGeoFlyerControllerShowDialog
