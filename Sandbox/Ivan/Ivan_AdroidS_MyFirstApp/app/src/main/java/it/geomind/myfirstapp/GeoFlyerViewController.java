@@ -46,7 +46,7 @@ public class GeoFlyerViewController extends ActionBarActivity implements MyAlert
 
     public void dialogFromCpp(View view) {
         if( mGeoFlyerController != 0 )
-            GeoFlyerControllerShowDialog( mGeoFlyerController );
+            DebugGeoFlyerControllerShowDialog( mGeoFlyerController );
     }
 
     public void messageBoxAndButtons( String inTitle, String inMsg, String[] inButtonStrings )
@@ -66,6 +66,6 @@ public class GeoFlyerViewController extends ActionBarActivity implements MyAlert
 
     private native long CreateGeoFlyerController();
     private native void DestroyGeoFlyerController( long inGeoFlyerController );
-    private native void GeoFlyerControllerShowDialog( long inGeoFlyerController );
+    private native void DebugGeoFlyerControllerShowDialog( long inGeoFlyerController );
     private native void	OnMessageBoxResult( long inGeoFlyerController, int inChoice ); // from viewcontroller to this (GeoFlyerCOntroller will call the inCallback of the inDelegate)
 }

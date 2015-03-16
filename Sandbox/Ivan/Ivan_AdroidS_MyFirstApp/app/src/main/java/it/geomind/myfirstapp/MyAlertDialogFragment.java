@@ -58,7 +58,18 @@ public class MyAlertDialogFragment extends DialogFragment implements DialogInter
 
     public void onClick( DialogInterface dialog, int which )
     {
-        mChoiceCode = which;
+        if( mButtonStrings.length == 1 )
+            mChoiceCode = 0;
+        if( mButtonStrings.length == 2 )
+             mChoiceCode = (which==DialogInterface.BUTTON_NEGATIVE) ? 0 : 1;
+        if( mButtonStrings.length >= 3 )
+            switch( which )
+            {
+                case DialogInterface.BUTTON_POSITIVE: mChoiceCode = 2; break;
+                case DialogInterface.BUTTON_NEUTRAL: mChoiceCode = 1; break;
+                case DialogInterface.BUTTON_NEGATIVE: mChoiceCode = 0; break;
+            }
+
         if( mListener != null )
             mListener.onFinishDialog( mChoiceCode );
     }
