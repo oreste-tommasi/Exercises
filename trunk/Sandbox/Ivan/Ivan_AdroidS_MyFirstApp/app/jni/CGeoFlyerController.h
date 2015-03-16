@@ -31,7 +31,7 @@ class CGeoFlyerController
 {
 	
 public:
-				CGeoFlyerController( void* inJinEnv, void* inViewController );
+				CGeoFlyerController( void* inViewController );
 	virtual	~CGeoFlyerController();
 	
 	void		MessageBox( const char* inTitle, const char* inMessage,
@@ -42,14 +42,14 @@ public:
 
 private: 
 	JavaVM*					mJvm;
-	JNIEnv*					mJniEnv;				// this is valid for the creation thread only
-	jobject					mViewController;	//
+	JNIEnv*					mJniEnv;					// \warning: this is valid for the thread that creates this object only 
+	jobject					mViewController;		//
 	
 	GfDelegateCallback	mDelegateCallback;
-	CGeoFlyerDelegate*	mDelegate;  ///< passing delegate, varying from call to call,
-												///< to be reset after the callback
+	CGeoFlyerDelegate*	mDelegate;				// passing delegate, varying from call to call,
+															// to be reset after the callback
 
-	JNIEnv* GetJniEnv() { return mJniEnv; }
+	JNIEnv* GetJniEnv() { return mJniEnv; }	// \warning: this is valid for the thread that creates this object only. GetJniEnvThreadSafe must be use to retrieve mJniEnv for other threads
 	JNIEnv* GetJniEnvThreadSafe();
 	jobject GetViewController() { return mViewController; }
 
