@@ -109,6 +109,9 @@
     <ClInclude Include="..\app\jni\it_geomind_myfirstapp_GeoFlyerViewController.h">
       <Filter>Source files</Filter>
     </ClInclude>
+    <ClInclude Include="..\app\jni\CFuffaDelegate.h">
+      <Filter>Source files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <JCompile Include="..\app\src\androidTest\java\it\geomind\myfirstapp\ApplicationTest.java">
