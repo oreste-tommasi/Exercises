@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{1180d98d-d10e-4482-8bc7-ce5261b3691d}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{78534f0b-2948-4f98-a237-734576312778}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{dccca936-6a4f-44ea-a8d3-45a0b97c2e6c}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Java Source Files">
+      <UniqueIdentifier>{f624d67a-0d54-47d6-a13e-4b141d127195}</UniqueIdentifier>
+      <Extensions>*.java</Extensions>
+    </Filter>
+    <Filter Include="Java Source Files\androidTest">
+      <UniqueIdentifier>{891f9036-9628-4296-b7a6-2b8dfd3f2c95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\androidTest\java">
+      <UniqueIdentifier>{d73bf343-b2e0-4fad-9ccf-2cc70cab9fec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\androidTest\java\com">
+      <UniqueIdentifier>{ff8e9d48-1d4f-4918-93ad-3ef45413384b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\androidTest\java\com\geomind">
+      <UniqueIdentifier>{9ef83139-2c71-4845-b5e6-7a02d61dd9d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\androidTest\java\com\geomind\geoflyer">
+      <UniqueIdentifier>{b5b73ac4-280b-4810-aa29-5822b0fbe608}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\androidTest\java\com\geomind\geoflyer\sampleapp">
+      <UniqueIdentifier>{419c1a17-6000-4953-98df-d5505a55812d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main">
+      <UniqueIdentifier>{00c6f502-d96d-480f-81f4-76d427d74ab6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\java">
+      <UniqueIdentifier>{701a3f12-5260-40fa-a406-3a9a0077ab4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\java\com">
+      <UniqueIdentifier>{c63caa80-eac5-4c73-a82b-4ee1626de1c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\java\com\geomind">
+      <UniqueIdentifier>{8de52496-46dd-4598-97f6-5f9c06675776}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\java\com\geomind\geoflyer">
+      <UniqueIdentifier>{4684b66c-dad4-4263-b12f-e1dd6e5faa95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\java\com\geomind\geoflyer\sampleapp">
+      <UniqueIdentifier>{6d129d68-9feb-49ae-9da5-2d7ab78b861d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\java\com\geomind\geoflyer\sampleapp\util">
+      <UniqueIdentifier>{ef9bbba9-0e28-44a5-b83d-eb46a038cdf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\res">
+      <UniqueIdentifier>{58201e65-3621-4511-8b28-6271126e5f85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\res\drawable">
+      <UniqueIdentifier>{ca489f0b-fc39-4ec4-929a-8e2a41acd392}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\res\layout">
+      <UniqueIdentifier>{5e8ea07d-7f44-486b-9abd-952ebc245c7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\res\mipmap-hdpi">
+      <UniqueIdentifier>{6807e022-f971-4179-a43b-63159dbfb4b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\res\mipmap-mdpi">
+      <UniqueIdentifier>{1cbfcede-59ad-4939-a314-6ab53f49b1fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\res\mipmap-xhdpi">
+      <UniqueIdentifier>{70da0fef-6404-41b8-888f-1bd18e8a5c35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\res\mipmap-xxhdpi">
+      <UniqueIdentifier>{58fe6993-4139-4c31-bc90-2cbdaaedef8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\res\values">
+      <UniqueIdentifier>{2fd1521c-7a7f-41d2-a5eb-4945c0e4fc3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Java Source Files\main\res\values-v11">
+      <UniqueIdentifier>{17ae370a-462d-4ad6-a793-31534b1238d7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\..\SampleApp\app\src\main\AndroidManifest.xml" />
+    <Xml Include="..\..\SampleApp\app\src\main\res\layout\activity_fullscreen.xml">
+      <Filter>Java Source Files\main\res\layout</Filter>
+    </Xml>
+    <Xml Include="..\..\SampleApp\app\src\main\res\values\attrs.xml">
+      <Filter>Java Source Files\main\res\values</Filter>
+    </Xml>
+    <Xml Include="..\..\SampleApp\app\src\main\res\values\colors.xml">
+      <Filter>Java Source Files\main\res\values</Filter>
+    </Xml>
+    <Xml Include="..\..\SampleApp\app\src\main\res\values\strings.xml">
+      <Filter>Java Source Files\main\res\values</Filter>
+    </Xml>
+    <Xml Include="..\..\SampleApp\app\src\main\res\values\styles.xml">
+      <Filter>Java Source Files\main\res\values</Filter>
+    </Xml>
+    <Xml Include="..\..\SampleApp\app\src\main\res\values-v11\styles.xml">
+      <Filter>Java Source Files\main\res\values-v11</Filter>
+    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\SampleApp\app\jni\Android.mk" />
+    <None Include="..\..\SampleApp\app\src\androidTest\java\com\geomind\geoflyer\sampleapp\ApplicationTest.java">
+      <Filter>Java Source Files\androidTest\java\com\geomind\geoflyer\sampleapp</Filter>
+    </None>
+    <None Include="..\..\SampleApp\app\src\main\java\com\geomind\geoflyer\sampleapp\FullscreenActivity.java">
+      <Filter>Java Source Files\main\java\com\geomind\geoflyer\sampleapp</Filter>
+    </None>
+    <None Include="..\..\SampleApp\app\src\main\java\com\geomind\geoflyer\sampleapp\util\SystemUiHider.java">
+      <Filter>Java Source Files\main\java\com\geomind\geoflyer\sampleapp\util</Filter>
+    </None>
+    <None Include="..\..\SampleApp\app\src\main\java\com\geomind\geoflyer\sampleapp\util\SystemUiHiderBase.java">
+      <Filter>Java Source Files\main\java\com\geomind\geoflyer\sampleapp\util</Filter>
+    </None>
+    <None Include="..\..\SampleApp\app\src\main\java\com\geomind\geoflyer\sampleapp\util\SystemUiHiderHoneycomb.java">
+      <Filter>Java Source Files\main\java\com\geomind\geoflyer\sampleapp\util</Filter>
+    </None>
+    <None Include="..\..\SampleApp\app\jni\Application.mk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\SampleApp\app\jni\hello.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\SampleApp\app\src\main\res\mipmap-hdpi\ic_launcher.png">
+      <Filter>Java Source Files\main\res\mipmap-hdpi</Filter>
+    </Image>
+    <Image Include="..\..\SampleApp\app\src\main\res\mipmap-mdpi\ic_launcher.png">
+      <Filter>Java Source Files\main\res\mipmap-mdpi</Filter>
+    </Image>
+    <Image Include="..\..\SampleApp\app\src\main\res\mipmap-xhdpi\ic_launcher.png">
+      <Filter>Java Source Files\main\res\mipmap-xhdpi</Filter>
+    </Image>
+    <Image Include="..\..\SampleApp\app\src\main\res\mipmap-xxhdpi\ic_launcher.png">
+      <Filter>Java Source Files\main\res\mipmap-xxhdpi</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
