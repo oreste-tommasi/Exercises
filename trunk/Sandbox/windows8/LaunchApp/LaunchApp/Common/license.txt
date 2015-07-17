@@ -1,0 +1,38 @@
+﻿IMPORTANT, PLEASE READ THE FOLLOWING TERMS AND CONDITIONS CAREFULLY BEFORE USING THIS SOFTWARE PRODUCT. THIS IS A LICENSE AGREEMENT.
+
+This SOFTWARE PRODUCT is protected by copyright laws and international copyright treaties, as well as other intellectual property laws and treaties. This SOFTWARE PRODUCT is licensed, not sold.
+This License is a legal agreement between you (either an individual or a single entity) and GEOMIND with regard to the copyrighted Software Application (herein referred to as "SOFTWARE PRODUCT" or "APPLICATION") provided with this License.   The SOFTWARE PRODUCT includes computer software, the associated media, any accompanying and tutorial data, and any "online" data used by the SOFTWARE PRODUCT.  If you do not agree with the terms of this License, do not download, install or use the Software. By installing or otherwise using the SOFTWARE PRODUCT, you agree to be bound by the terms of this License.  If you do not agree to the terms of this License, GEOMIND is unwilling to license the SOFTWARE PRODUCT to you.
+
+1.	LICENSE GRANT
+GEOMIND grants to you a personal, non-transferable and non-exclusive right to use the APPLICATION provided with this License on a device that you own or control.  Transferring or assigning the Software, or any rights granted hereunder, to any other persons is not allowed. The use of this APPLICATION must be considered strictly personal, no commercial use is allowed.
+In particular it is not allowed: a) to make alterations to, or modifications of, any part of the SOFTWARE PRODUCT; b) to incorporate or combine any part of the SOFTWARE PRODUCT in other programs; c) to disassemble, decompile, reverse-engineer or create derivative products based on any part of the SOFTWARE PRODUCT.
+
+2.	COPYRIGHT
+The APPLICATION is licensed, not sold.  You acknowledge that no title to the intellectual property in the APPLICATION is transferred to you. You further acknowledge that title and full ownership rights to the APPLICATION will remain the exclusive property of GEOMIND and/or its partners and suppliers, and you will not acquire any rights to the SOFTWARE PRODUCT.
+
+3.	PHONE SERVICES
+You acknowledge that the APPLICATION may need phone services and data access capability, and that your carrier rates for phone and data apply.
+
+4.	USE AND ACCESS TO DATA
+You explicitly acknowledge that any data (including imagery, 3D models, vector data) accompanying or obtained by the SOFTWARE PRODUCT through online services provided by GEOMIND and/or its partners/suppliers are subject to copyright terms: you cannot get any access to such data outside of the user interface functionalities provided by the APPLICATION.
+
+5.	what3words
+The SOFTWARE PRODUCT included the what3words SDK (http://what3words.com/). The what3words SDK converts searches that are compatible with what3words into geographic co-ordinates, and converts geographic co-ordinates into what3words.
+
+6.	USER DETAILED INFORMATION
+In addition to the terms set out in the standard Apple Licensed Application End User Agreement, you agree to the APPLICATION collecting detailed user information. A copy of the Apple standard EULA can be found at http://www.apple.com/legal/internet-services/itunes/appstore/dev/stdeula/
+
+7.	TERMINATION
+Any failure to comply with the above or any other terms and conditions contained herein will result in the automatic termination of this license and the reversion of the rights granted hereunder to GEOMIND, with the obligation for you to fully remove the SOFTWARE PRODUCT from your devices.
+
+8.	DISCLAIMER OF WARRANTY
+Your use of the APPLICATION is at your sole risk. The APPLICATION is provided "AS IS" without warranty of any kind.  To the maximum extent permitted by law, GEOMIND and its suppliers disclaim and make no express or implied warranties, including, but not limited to the implied warranties and conditions of merchantability, fitness for a particular purpose and non-infringement. Neither GEOMIND nor its suppliers warrant that the functions contained in the APPLICATION will meet your requirements or that the operation of the APPLICATION will be uninterrupted or error-free.
+THE APPLICATION IS NOT INTENDED FOR USE IN LIFE SUPPORT SYSTEMS, EMERGENCY COMMUNICATIONS, AIRCRAFT NAVIGATION OR COMMUNICATION SYSTEMS, AIR TRAFFIC CONTROL SYSTEMS, OR ANY OTHER SUCH ACTIVITIES IN WHICH CASE THE FAILURE OF THE APPLICATION COULD LEAD TO DEATH, PERSONAL INJURY, OR SEVERE PHYSICAL OR ENVIRONMENTAL DAMAGE.
+
+
+GEOMIND S.r.L. (ABACO Group)
+Via Carducci 64/D
+Ghezzano (PI) 56010 (Italy)
+tel. +39 050 9911062 - fax +39 050 9911063
+email: geomind@geomind.it
+http://www.geomind.it
