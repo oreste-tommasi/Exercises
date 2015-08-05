@@ -9,6 +9,6 @@
 
     <Grid Background="#FF0099FF">
         <Image x:Name="SplashImage" />
-        <ProgressRing x:Name="progress1" Margin="647,566,651,134" IsActive="True" Height="68" Width="68" Foreground="White"/>
+        <ProgressRing x:Name="progress1" Margin="654,573,657,140" IsActive="True" Height="55" Width="55" Foreground="White"/>
     </Grid>
 </Page>

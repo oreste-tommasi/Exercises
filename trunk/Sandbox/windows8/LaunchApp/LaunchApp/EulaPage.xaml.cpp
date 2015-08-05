@@ -6,7 +6,10 @@
 #include "pch.h"
 #include "EulaPage.xaml.h"
 #include "LaunchPage.xaml.h"
+#include "WaitingDialog.xaml.h"
 #include <ppltasks.h>
+
+#include "SharedClass.h"
 
 using namespace LaunchApp;
 
@@ -53,7 +56,18 @@ EulaPage::EulaPage()
 void
 EulaPage::Accepted_ButtonClick(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e)
 {
-	if (!Frame->Navigate(LaunchPage::typeid))
+	/*SharedClass^ shareObj = ref new SharedClass;
+	shareObj->mTextInfo = "ciao";
+	shareObj->mValid = true;
+	shareObj->mValue = 3.7;
+
+	int myInt = 6;*/
+
+	/*WaitingDialog^ msg = ref new WaitingDialog;
+
+	msg->*/
+
+	if (!Frame->Navigate( LaunchPage::typeid, this))
 	{
 		throw ref new FailureException("Failed to create the next page");
 	}

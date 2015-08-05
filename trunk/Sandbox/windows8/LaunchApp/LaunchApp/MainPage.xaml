@@ -7,23 +7,26 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.ChildrenTransitions>
-            <TransitionCollection>
-                <EntranceThemeTransition/>
-            </TransitionCollection>
-        </Grid.ChildrenTransitions>
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid>
+        <Grid Grid.Row="0">
             <TextBlock x:Name="pageTitle" Text="Home" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="120,0,30,40"/>
         </Grid>
-        <StackPanel Grid.Row="1"
-            Margin="120,0,120,4">
-            <TextBlock x:Name="EulaText" />
-        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="700"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <WebView Grid.Column="1" x:Name="mWebView" Source="http://www.geoflyer.it/3dmaps/news_test/ita/home.htm" DefaultBackgroundColor="Black" >
+                <WebView.Transitions>
+                    <TransitionCollection/>
+                </WebView.Transitions>
+            </WebView>
+        </Grid>
     </Grid>
 </Page>
