@@ -6,6 +6,7 @@
 #pragma once
 
 #include "App.g.h"
+//#include "WaitingDialog.h"
 
 namespace LaunchApp
 {

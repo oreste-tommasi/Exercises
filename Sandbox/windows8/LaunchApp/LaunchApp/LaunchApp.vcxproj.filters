@@ -28,11 +28,20 @@
     <ClCompile Include="App.xaml.cpp" />
     <ClCompile Include="MainPage.xaml.cpp" />
     <ClCompile Include="pch.cpp" />
+    <ClCompile Include="EulaPage.xaml.cpp" />
+    <ClCompile Include="LaunchPage.xaml.cpp" />
+    <ClCompile Include="SharedClass.cpp" />
+    <ClCompile Include="WaitingDialog.xaml.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="App.xaml.h" />
     <ClInclude Include="MainPage.xaml.h" />
+    <ClInclude Include="EulaPage.xaml.h" />
+    <ClInclude Include="LaunchPage.xaml.h" />
+    <ClInclude Include="SharedClass.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="WaitingDialog.xaml.h" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest" />
@@ -44,6 +53,8 @@
     <Page Include="MainPage.xaml" />
     <Page Include="EulaPage.xaml" />
     <Page Include="LaunchPage.xaml" />
+    <Page Include="Themes\Generic.xaml" />
+    <Page Include="WaitingDialog.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\default_launch.scale-100.png">
@@ -60,5 +71,8 @@
     <Text Include="Common\license.txt">
       <Filter>Common</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="LaunchApp.rc" />
   </ItemGroup>
 </Project>

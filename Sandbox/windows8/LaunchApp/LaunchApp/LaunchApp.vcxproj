@@ -144,6 +144,11 @@
     <ClInclude Include="MainPage.xaml.h">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="SharedClass.h" />
+    <ClInclude Include="WaitingDialog.xaml.h">
+      <DependentUpon>WaitingDialog.xaml</DependentUpon>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -156,6 +161,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic.xaml" />
+    <Page Include="WaitingDialog.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
@@ -199,9 +208,16 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="SharedClass.cpp" />
+    <ClCompile Include="WaitingDialog.xaml.cpp">
+      <DependentUpon>WaitingDialog.xaml</DependentUpon>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Common\license.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="LaunchApp.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
