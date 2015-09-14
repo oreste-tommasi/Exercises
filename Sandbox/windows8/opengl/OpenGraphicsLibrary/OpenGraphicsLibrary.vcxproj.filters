@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resources">
+      <UniqueIdentifier>c33dd36b-81c7-4ce9-8826-87b8221c4472</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Graphics.cpp" />
+    <ClCompile Include="GL.cpp" />
+    <ClCompile Include="GDI.cpp" />
+    <ClCompile Include="Kernel.cpp" />
+    <ClCompile Include="User.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Graphics.h" />
+    <ClInclude Include="GL.h" />
+    <ClInclude Include="GDI.h" />
+    <ClInclude Include="Kernel.h" />
+    <ClInclude Include="User.h" />
+  </ItemGroup>
+</Project>
