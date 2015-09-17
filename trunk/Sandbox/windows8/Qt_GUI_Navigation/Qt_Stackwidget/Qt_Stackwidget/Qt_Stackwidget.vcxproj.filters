@@ -29,7 +29,7 @@
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
     <Filter Include="Generated Files\Release">
-      <UniqueIdentifier>{8b8a3b33-6adf-43a3-b10b-b503dcc03827}</UniqueIdentifier>
+      <UniqueIdentifier>{7d08c17a-3466-4580-ad61-eea467bd78cb}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
@@ -55,11 +55,11 @@
     <CustomBuild Include="qt_stackwidget.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="qt_stackwidget.ui">
-      <Filter>Form Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="qt_stackwidget.qrc">
       <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="qt_stackwidget.ui">
+      <Filter>Form Files</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
