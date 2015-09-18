@@ -17,6 +17,7 @@ public:
 
 	bool		ShowDialog( char* inMsg );
 	void		CallDllToShowDialog();
+	void		SwitchFullScreen( bool inVal );
 
 private:
 	Ui::Ivan_QtTwoWayCommunicationClass ui;

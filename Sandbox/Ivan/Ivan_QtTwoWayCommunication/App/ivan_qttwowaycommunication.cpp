@@ -24,6 +24,9 @@ Ivan_QtTwoWayCommunication::Ivan_QtTwoWayCommunication(QWidget *parent)
 
 	connect( ui.mShowDialogButton, &QPushButton::clicked, this, &Ivan_QtTwoWayCommunication::CallDllToShowDialog );
 
+	connect( ui.mFullScreenButton, &QPushButton::toggled, this, &Ivan_QtTwoWayCommunication::SwitchFullScreen );
+
+
 /*	QSurfaceFormat format;
 	format.setDepthBufferSize(24);
 	format.setStencilBufferSize(0);
@@ -38,14 +41,16 @@ Ivan_QtTwoWayCommunication::Ivan_QtTwoWayCommunication(QWidget *parent)
 	CMyOpenGlWidget* mGlWidget = new CMyOpenGlWidget( this );
 
 	QWindow* mFooWin = new QWindow();
-	mGlWidget->createWindowContainer( mFooWin );
+	//mGlWidget->createWindowContainer( mFooWin );
 
 	mGlWidget->lower();
 
+	ui.mGridLayout->addWidget( mGlWidget, 0, 1, -1, -1 );
+
 	//mGlWidget->setFormat(format); // must be called before the widget or its parent window gets shown
 
-	CMyOpenGlWidget* mGlWidget2 = new CMyOpenGlWidget( this );
-	ui.mGridLayout->addWidget( mGlWidget2, 0, 2 );
+	//CMyOpenGlWidget* mGlWidget2 = new CMyOpenGlWidget( this );
+	//ui.mGridLayout->addWidget( mGlWidget2, 0, 2 );
 
 }
 
@@ -59,6 +64,13 @@ Ivan_QtTwoWayCommunication::ShowDialog( char* inMsg )
 {
 	QMessageBox::StandardButton	button = QMessageBox::warning( this, "dialog", inMsg );
 	return button == QMessageBox::Ok;
+
+	/*QMessageBox* msgBox = new QMessageBox;
+	msgBox->addButton( "ok", QMessageBox::AcceptRole );
+	msgBox->setText( "prova dialog " );
+
+	msgBox->*/
+
 }
 
 void
@@ -66,4 +78,22 @@ Ivan_QtTwoWayCommunication::CallDllToShowDialog()
 {
 	mDllObj->ShowDialog();
 }
+
+void
+Ivan_QtTwoWayCommunication::SwitchFullScreen( bool inVal )
+{
+	if( inVal )
+	{
+		//setWindowFlags(Qt::WindowStaysOnTopHint | Qt::FramelessWindowHint | windowFlags() );
+		showFullScreen();
+	}
+	else
+	{
+		/*flags
+
+		setWindowFlags( Qt::WindowStaysOnTopHint | Qt::FramelessWindowHint | windowFlags() );*/
+		showNormal();
+	}
+}
+
 
